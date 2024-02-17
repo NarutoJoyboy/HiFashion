@@ -8,6 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import React, {useState} from 'react';
+import {Divider} from '@rneui/themed';
 
 export default function Home() {
   const {Width, Height} = useWindowDimensions();
@@ -34,8 +35,12 @@ export default function Home() {
 
   const DividerLine = () => {
     return (
-      <View style={styles.dividerposition}>
-        <Text style={styles.dividerbox}></Text>
+      <View style={styles.container}>
+        <View style={styles.divider} />
+        <View style={styles.boxContainer}>
+          <View style={styles.smallBox} />
+        </View>
+        <View style={styles.divider} />
       </View>
     );
   };
@@ -54,8 +59,9 @@ export default function Home() {
         <View>
           <View>
             <Text style={{fontSize: 28, color: 'black', textAlign: 'center'}}>
-              New Arrival
+              NEW ARRIVAL
             </Text>
+
             <DividerLine />
           </View>
           <View>
@@ -69,7 +75,10 @@ export default function Home() {
                 {catlist.map(items => {
                   return (
                     <View key={items.id} style={styles.listitems}>
+                      <TouchableOpacity>
                       <Text style={styles.catlistitemstyle}>{items.item}</Text>
+                      </TouchableOpacity>
+
                     </View>
                   );
                 })}
@@ -128,11 +137,17 @@ export default function Home() {
                   <Text style={styles.brandtxt}>GUCCI</Text>
                   <Text style={styles.brandtxt}>TIFANNY & CO.</Text>
                 </View>
+                <View style={{marginTop:20}}>
+
                 <DividerLine />
+                </View>
               </View>
             </View>
             <View>
               <Text>COLLECTIONS</Text>
+              <View style={{width: Width}}>
+                <Image source={require('../Icons/Frame2.png')} />
+              </View>
             </View>
           </View>
         </View>
@@ -169,8 +184,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'row',
     paddingVertical: 8,
-    marginBottom:30
-    
+    marginBottom: 30,
   },
   buttontxt2: {
     fontSize: 20,
@@ -187,14 +201,26 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 20,
   },
-  dividerbox: {
-    borderWidth: 1,
-    width: 10,
-    height: 10,
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal:150,
+    marginBottom:30
   },
-  dividerposition: {
-    alignSelf: 'center',
-    marginBottom:30,
-    marginTop:10
+  divider: {
+    flex: 1,
+    height: 0.5,
+    backgroundColor: 'grey',
+  },
+  boxContainer: {
+    width: 15, // Adjust the width of the box container
+    alignItems: 'center',
+  },
+  smallBox: {
+    width: 10, // Adjust the width of the small box
+    height: 10, // Adjust the height of the small box
+    borderWidth: 0.5,
+    transform:[{rotate:'45deg'}],
+    borderColor:'grey'
   },
 });
