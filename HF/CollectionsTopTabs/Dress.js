@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Dress() {
   return (
-    <View style={{flex:1}}>
+    <View>
       <Text>Dress</Text>
     </View>
   )
