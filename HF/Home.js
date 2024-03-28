@@ -1,11 +1,21 @@
 import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native'
 import React from 'react'
 import Collectiontabs from './collectiontabs';
+import Image9 from "../Icons/image 9.svg"
 
 export default function Home() {
 
   const Width= Dimensions.get('window').width;
   const Height= Dimensions.get('window').height;
+
+  const Brnds = [
+    {name:'PRADA', id:1},
+    {name:'BURBERRY', id:2},
+    {name:'BOSS', id:3},
+    {name:'Cartier', id:4},
+    {name:'GUCCI', id:5},
+    {name:'TIFFANT & CO.', id:6},
+  ]
 
   const Divider = ()=>{
     return(
@@ -44,12 +54,29 @@ export default function Home() {
       <View style={{flex:1, height:Height}}>
         <Collectiontabs/>
       </View>
-      <View>
-        <TouchableOpacity>
-          <Text style={styles.txt2}>EXPLORE MORE</Text>
-          <Divider/>
+      <View style={{alignSelf:'center'}}>
+        <TouchableOpacity style={{alignSelf:'center', marginBottom:20 }}>
+          <Text style={styles.txt3}>EXPLORE MORE</Text>
         </TouchableOpacity>
+          <Divider/>
       </View>
+
+      <View style={{flexWrap:'wrap', flexDirection:'row', justifyContent:'center'}}>
+        {
+          Brnds.map((item)=>{
+            return(
+              <Text key={item.id} style={{fontSize:20, padding:20,}}>{item.name}</Text>
+            )
+          })
+        }
+        <Divider/>
+      </View>
+      <View style={{alignItems:'center'}}>
+      <Text style={{fontSize:24, fontFamily:'TenorSans-Regular', marginVertical:20, }}>COLLECTIONS</Text>
+      <Image source={require('../Icons/Frame2.png')} style={{width:Width}}/>
+      
+      </View>
+      <Image9/>
     </View>
       </ScrollView>
   )
@@ -98,9 +125,16 @@ const styles = StyleSheet.create({
     fontSize:20,
     alignItems:'center',
     fontFamily:'TenorSans-Regular',
+    color:'black'
 
 
   },
+  txt3:{
+    fontSize:17,
+    alignItems:'center',
+    fontFamily:'TenorSans-Regular',
+    color:'black'
+  }
   
 
 })
