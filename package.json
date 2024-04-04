@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@klarna/react-native-vector-drawable": "^0.5.1",
     "@react-native-community/cli": "^12.3.5",
     "@react-native-firebase/app": "^18.8.0",
     "@react-native-firebase/auth": "^18.7.3",
@@ -26,7 +27,7 @@
     "@tamagui/core": "^1.89.28",
     "metro": "^0.80.6",
     "react": "18.2.0",
-    "react-native": "^0.73.4",
+    "react-native": "^0.73.6",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "^2.14.0",
     "react-native-ico": "^43.7.4",
@@ -44,8 +45,10 @@
     "react-native-tab-view": "^3.5.2",
     "react-native-uuid": "^2.0.1",
     "react-native-vector-icons": "^10.0.3",
+    "react-native-vector-image": "^0.4.5",
     "react-native-video": "^5.2.1",
-    "react-native-vision-camera": "^3.8.2"
+    "react-native-vision-camera": "^3.8.2",
+    "vector-icons": "^0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

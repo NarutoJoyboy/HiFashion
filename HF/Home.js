@@ -1,6 +1,7 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView,  } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView, FlatList  } from 'react-native'
 import React from 'react'
 import Collectiontabs from './collectiontabs';
+
 
 export default function Home() {
 
@@ -74,7 +75,31 @@ export default function Home() {
       <Text style={{fontSize:24, fontFamily:'TenorSans-Regular', marginVertical:20, }}>COLLECTIONS</Text>
       <Image source={require('../Icons/Frame2.png')} style={{width:Width}}/>
       <Image source={require('../Icons/image9.png')} style={{width:200}}/>
-      <Image source={require('../Icons/Video.png')} style={{ width:200}}/>
+      <Image source={require('../Icons/Video.png')} style={{ width:Width, height:400}}/>
+      </View>
+      <View>
+        <Text>Just for you</Text>
+        <Divider/>
+          <Image source={require('../Icons/Frame2.png')} style={{width:200, height:400}}/>
+      </View>
+
+      <View style={{backgroundColor:'rgba(221,133,96, 0.5)', alignItems:'center',}}>
+        <View>
+        <Text>Classy Store</Text>
+        </View>
+        <Text>Making a luxurious lifestyle accessible for a generous group of women is our daily drive</Text>
+        <Divider/>
+        <View style={{flexWrap:'wrap', flexDirection:'row', justifyContent:'center'}} >
+
+        {ShippingDetails.map((item)=>{
+          return(
+            <View key={item.id} style={{ alignItems:'center', margin:10, width:150}}>
+              <Image source={item.img} style={{width:30, height:30}}/>
+              <Text style={{textAlign:"center"}}>{item.name}</Text>
+            </View>
+          )
+        })}
+        </View>
       </View>
       
     </View>
@@ -138,3 +163,10 @@ const styles = StyleSheet.create({
   
 
 })
+
+const ShippingDetails = [
+  {img:require('../Icons/sticker1.png'), name:'Fast shipping Free on order above $25', id:1},
+  {img:require('../Icons/sticker2.png'), name:'Sustainable process from start to finish', id:2},
+  {img:require('../Icons/sticker3.png'), name:'Unique designs and high quality materials', id:3},
+  {img:require('../Icons/sticker4.png'), name:'Giving priority to customers by taking reveiws', id:4},
+]
