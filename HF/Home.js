@@ -1,7 +1,6 @@
-import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native'
+import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView,  } from 'react-native'
 import React from 'react'
 import Collectiontabs from './collectiontabs';
-import Image9 from "../Icons/image 9.svg"
 
 export default function Home() {
 
@@ -74,9 +73,10 @@ export default function Home() {
       <View style={{alignItems:'center'}}>
       <Text style={{fontSize:24, fontFamily:'TenorSans-Regular', marginVertical:20, }}>COLLECTIONS</Text>
       <Image source={require('../Icons/Frame2.png')} style={{width:Width}}/>
-      
+      <Image source={require('../Icons/image9.png')} style={{width:200}}/>
+      <Image source={require('../Icons/Video.png')} style={{ width:200}}/>
       </View>
-      <Image9/>
+      
     </View>
       </ScrollView>
   )
