@@ -1,11 +1,24 @@
 import {View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView} from "react-native"
 import React from 'react';
 import Collectiontabs from './collectiontabs';
-import {AntDesign} from 'react-native-vector-icons/AntDesign';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+import useNavigation from '@react-navigation/native';
 
-export default function Home() {
+
+export default function Home({navigation}) {
+
+  
+
   const Width = Dimensions.get('window').width;
   const Height = Dimensions.get('window').height;
+
+  const list1=[
+    {name: 'About', id: 1, onPress: ()=> console.log('ABout')},
+    {name: 'Contact', id: 2, onPress: ()=> console.log('Contact')},
+    {name: 'Blog', id: 3, onPress: ()=> navigation.navigate('Blog')},
+  ]
+  
+
 
   const Brnds = [
     {name: 'PRADA', id: 1},
@@ -15,6 +28,8 @@ export default function Home() {
     {name: 'GUCCI', id: 5},
     {name: 'TIFFANT & CO.', id: 6},
   ];
+
+  
 
   const Divider = () => {
     return (
@@ -154,26 +169,34 @@ export default function Home() {
           </View>
         </View>
 
-        <View>
-          <View>
+        <View style={{alignSelf:'center', marginVertical:10}}>
+          <View style={{flexDirection:'row', justifyContent:"space-between", marginBottom:10}}>
             <AntDesign name="twitter" size={24} color="black" />
             <AntDesign name="instagram" size={24} color="black" />
             <AntDesign name="youtube" size={24} color="black" />
           </View>
           <Divider />
         </View>
-        <View>
-          {/* <TouchableOpacity>
+        <View style={{alignSelf:'center', alignItems:'center'}}>
+          <TouchableOpacity>
             <Text>supportt@classystore</Text>
           </TouchableOpacity>
           <TouchableOpacity>
             <Text>+121234567896</Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
           
           <Text>08:00 - 22:00 - Everyday</Text>
-        </View>
         <Divider />
-        <View></View>
+        </View>
+        <View style={{flexDirection:'row', alignSelf:'center', justifyContent:'space-between', marginBottom:30}}>
+          {list1.map((item) => {
+            return(
+              <TouchableOpacity key={item.id} onPress={item.onPress} style={{marginHorizontal:20}}>
+                <Text style={{fontSize:18, color:'black', fontFamily:'TenorSans-Regular'}}>{item.name}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </View>
       </View>
     </ScrollView>
   );
@@ -251,3 +274,4 @@ const ShippingDetails = [
     id: 4,
   },
 ];
+
