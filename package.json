@@ -34,6 +34,7 @@
     "react-native-ico-dazzle-line": "^5.1.2",
     "react-native-ico-material-design": "^5.1.2",
     "react-native-image-picker": "^7.1.0",
+    "react-native-linear-gradient": "^2.8.3",
     "react-native-pager-view": "^6.2.3",
     "react-native-paper": "^5.11.7",
     "react-native-reanimated": "^3.6.2",

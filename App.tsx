@@ -14,7 +14,7 @@ export default function App() {
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator screenOptions={{ contentStyle:{backgroundColor:MyTheme.colors.primary}}}>
-        <Stack.Screen name='Home' component={Home}/>
+        {/* <Stack.Screen name='Home' component={Home}/> */}
         <Stack.Screen name='Blog' component={Blog}/>
       </Stack.Navigator>
     </NavigationContainer>

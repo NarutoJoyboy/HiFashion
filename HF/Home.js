@@ -2,7 +2,6 @@ import {View, Text, Image, TouchableOpacity, StyleSheet, Dimensions, ScrollView}
 import React from 'react';
 import Collectiontabs from './collectiontabs';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import useNavigation from '@react-navigation/native';
 
 
 export default function Home({navigation}) {
