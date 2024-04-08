@@ -57,13 +57,13 @@ export default function Home({ navigation }) {
   ];
   
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'white' }} showsVerticalScrollIndicator={false}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View>
         <Header />
         <View>
           <Image source={require('../Icons/image10.png')} style={{ width: Width }} />
           <View style={{ position: 'absolute', top: Height / 2.5, alignItems: 'center', justifyContent: 'center', alignSelf: 'center' }}>
-            <Text style={styles.txt1}>LUXURY</Text>
+            <Text style={[styles.txt1, ]}>LUXURY</Text>
             <Text style={styles.txt1}>FASHION</Text>
             <Text style={styles.txt1}>ACCESSORIES</Text>
           </View>
@@ -85,7 +85,8 @@ export default function Home({ navigation }) {
           <TouchableWithoutFeedback >
             <View style={{ marginBottom: 20, flexDirection:'row', alignItems:'center', justifyContent:'center', alignContent:'center' }}>
             <Text style={styles.txt3}>EXPLORE MORE</Text>
-            <Image source={require('../Icons/ForwardArrow.png')}/>
+            {/* <Image source={require('../Icons/ForwardArrow.png')}/> */}
+            <AntDesign name='arrowright' size={20} color={'black'}/>
             </View>
           </TouchableWithoutFeedback>
           <Divider /> 
@@ -165,6 +166,10 @@ export default function Home({ navigation }) {
 
 const styles = StyleSheet.create({
   // Text Styles
+  container:{
+    flex: 1, 
+    backgroundColor: 'white'
+  },
   txt1: {
     fontSize: 45,
     color: 'white',

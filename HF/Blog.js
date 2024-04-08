@@ -25,6 +25,10 @@ export default function Blog() {
 
   const filter = ['Fashion', 'Promo', 'Policy', 'Lookbook', 'Sale'];
 
+  const postData = [
+    {name:'2021 STYLE GUIDE: The Biggest Fall Trends', tag:['Fashion', 'Tips'], daysAgo: 2, image: require('../Icons/image9.png')},
+  ]
+
   const FilterComponent =({item, index})=>{
     return(
       <View style={{paddingRight:20}}>
@@ -39,27 +43,19 @@ export default function Blog() {
       />
       </View>
     )
-  }
+  };
 
-  const renderItem = ({item, index}) => {
+
+  const Post = ()=>{
     return(
-      <View style={styles.filterstyle}>
-        <Text style={styles.filtertext}>{item}</Text>
-      </View>
-    )
-  }
-
-  return (
-    <View style={styles.container}>
-      <Header/>
-      <View style={styles.title}>
-        <Text style={{fontSize:20, color:'black'}}>Blog</Text>
-        <Divider />
-      </View>
-      <FilterComponent/>
-      <View style={{marginHorizontal: 25}}>
+      <FlatList
+      data={postData}
+      keyExtractor={(index) => index.toString()}
+      renderItem={({item}) => {
+        return(
+          <View style={{marginHorizontal: 25}}>
         <Image
-          source={require('../Icons/image9.png')}
+          source={item.image}
           style={styles.image}
           resizeMode="cover"
         />
@@ -77,20 +73,53 @@ export default function Blog() {
 
             </TouchableWithoutFeedback>
         <Text style={styles.text}>
-          2021 STYLE GUIDE: The Biggest Fall Trends
+          {item.name}
         </Text>
         <View style={styles.tagContainer}>
-          <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
+          {/* <View style={{flexDirection: 'row', justifyContent:'space-evenly'}}>
             <TouchableWithoutFeedback onPress={()=>console.warn('Fashion')}>
             <Text style={styles.tag}>#Fashion</Text>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback onPress={()=>console.warn('Tips')}>
             <Text style={styles.tag}>#Tips</Text>
             </TouchableWithoutFeedback>
-          </View>
+          </View> */}
+          {item.tag.map((tag, tagIndex) => {
+            return(
+              <View key={tagIndex}>
+                <Text>{tag}</Text>
+              </View>
+            )
+          })}
           <Text style={styles.daysAgoText}>days ago</Text>
         </View>
       </View>
+        )
+      }}
+      />
+    )
+  }
+
+  const renderItem = ({item, index}) => {
+    return(
+      <View style={styles.filterstyle}>
+        <Text style={styles.filtertext}>{item}</Text>
+      </View>
+    )
+  };
+
+  
+
+  return (
+    <View style={styles.container}>
+      <Header/>
+      <View style={styles.title}>
+        <Text style={{fontSize:20, color:'black'}}>Blog</Text>
+        <Divider />
+      </View>
+      <FilterComponent/>
+      <Post/>
+      
       <View style={{position:'absolute', bottom:0, left:0, right:0}}>
       
 

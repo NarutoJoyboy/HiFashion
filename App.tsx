@@ -4,7 +4,7 @@ import { NavigationContainer, DefaultTheme, useTheme } from '@react-navigation/n
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import Home from './HF/Home';
 import Blog from './HF/Blog';
-import MyTheme from './HF/themeColors/MyTheme';
+import MyTheme from './HF/Colors/MyTheme';
 
 export default function App() {
 
