@@ -20,7 +20,6 @@ const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 export default function BlogPost() {
-
   const navigation = useNavigation();
 
   const postData = [
@@ -29,60 +28,74 @@ export default function BlogPost() {
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
       image: require('../../Icons/image9.png'),
+      
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
       image: require('../../Icons/image9.png'),
+      
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
       image: require('../../Icons/image9.png'),
+      
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
       image: require('../../Icons/image9.png'),
+      
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
       image: require('../../Icons/image9.png'),
+      
     },
   ];
 
   const [save, setsave] = useState(false);
 
-  const renderItem =({item})=>{
+  const handleSave = itemId => {
+    setsave(prevState => ({
+      ...prevState,
+      [itemId]: !prevState[itemId],
+    }));
+  };
+
+  const renderItem = ({item, index}) => {
     return (
       <View style={{marginHorizontal: 25}}>
-        <TouchableWithoutFeedback onPress={()=>navigation.navigate(BlogPostDetails)}>
+        <TouchableWithoutFeedback
+          onPress={() => navigation.navigate('BlogPostDetails', {item})}>
           <View>
+            <Image
+              source={item.image}
+              style={styles.image}
+              resizeMode="cover"
+            />
+            <LinearGradient
+              colors={['transparent', 'black']}
+              style={styles.gradient}></LinearGradient>
 
-          
-        <Image
-          source={item.image}
-          style={styles.image}
-          resizeMode="cover"
-        />
-        <LinearGradient
-          colors={['transparent', 'black']}
-          style={styles.gradient}></LinearGradient>
-
-        <TouchableWithoutFeedback onPress={() => setsave(!save)}>
-          <Ionicons
-            name={!save ? 'bookmark-outline' : 'bookmark'}
-            size={20}
-            color={'white'}
-            style={styles.bookmarkIcon}
-          />
+            <TouchableWithoutFeedback onPress={() => handleSave(index)}>
+              <Ionicons
+                name={!save[index] ? 'bookmark-outline' : 'bookmark'}
+                size={20}
+                color={'white'}
+                style={styles.bookmarkIcon}
+              />
+            </TouchableWithoutFeedback>
+            <Text style={styles.text}>{item.name}</Text>
+          </View>
         </TouchableWithoutFeedback>
-        <Text style={styles.text}>{item.name}</Text>
+
         <View style={styles.tagContainer}>
           <View
             style={{
@@ -99,15 +112,11 @@ export default function BlogPost() {
               );
             })}
           </View>
-          <Text style={[styles.daysAgoText, FontFamily.txt]}>
-            days ago
-          </Text>
+          <Text style={[styles.daysAgoText, FontFamily.txt]}>days ago</Text>
         </View>
-        </View>
-        </TouchableWithoutFeedback>
       </View>
     );
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -116,12 +125,11 @@ export default function BlogPost() {
         keyExtractor={(item, index) => item.name + index.toString()}
         renderItem={renderItem}
       />
-      <TouchableWithoutFeedback
-        >
-          <View style={styles.buttonStyle}>
-        <Text style={[styles.Button, FontFamily.txt]}>Load More</Text>
-        <Ionicons name="add-sharp" size={22} color={'black'} />
-          </View>
+      <TouchableWithoutFeedback>
+        <View style={styles.buttonStyle}>
+          <Text style={[styles.Button, FontFamily.txt]}>Load More</Text>
+          <Ionicons name="add-sharp" size={22} color={'black'} />
+        </View>
       </TouchableWithoutFeedback>
     </View>
   );
@@ -160,7 +168,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     color: 'white',
     fontSize: 19,
-    bottom: 70,
+    bottom: 20,
     left: 15,
   },
   tagContainer: {
@@ -192,10 +200,10 @@ const styles = StyleSheet.create({
     fontFamily: 'TenorSans-Regular',
     margin: 10,
   },
-  buttonStyle:{
+  buttonStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
     borderWidth: 1,
     alignItems: 'center',
-  }
+  },
 });
