@@ -3,9 +3,9 @@ import React from 'react'
 import { NavigationContainer, DefaultTheme, useTheme } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import Home from './HF/Home';
-import Blog from './HF/Blog';
+import Blog from './HF/blogSection/Blog';
 import MyTheme from './HF/Colors/MyTheme';
-import BlogPostDetails from './HF/BlogPostDetails';
+import BlogPostDetails from './HF/blogSection/BlogPostDetails';
 
 export default function App() {
 

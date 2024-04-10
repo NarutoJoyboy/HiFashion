@@ -12,7 +12,7 @@ import {
 import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
-import FontFamily from './Colors/style';
+import FontFamily from '../Colors/style';
 import BlogPostDetails from './BlogPostDetails';
 import {useNavigation} from '@react-navigation/native';
 
@@ -28,31 +28,31 @@ export default function BlogPost() {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../Icons/image9.png'),
+      image: require('../../Icons/image9.png'),
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../Icons/image9.png'),
+      image: require('../../Icons/image9.png'),
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../Icons/image9.png'),
+      image: require('../../Icons/image9.png'),
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../Icons/image9.png'),
+      image: require('../../Icons/image9.png'),
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../Icons/image9.png'),
+      image: require('../../Icons/image9.png'),
     },
   ];
 

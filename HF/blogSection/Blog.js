@@ -11,28 +11,28 @@ import {
   ScrollView,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Divider from './Head & Foot/divider';
-import Header from './Head & Foot/header';
+import Divider from '../Head & Foot/divider';
+import Header from '../Head & Foot/header';
 import BlogPost from './BlogPost';
-import FontFamily from './Colors/style';
+import FontFamily from '../Colors/style';
 
 
 export default function Blog() {
   const filter = ['Fashion', 'Promo', 'Policy', 'Lookbook', 'Sale'];
 
-  // const FilterComponent = ({item, index}) => {
-  //   return (
-  //     <View style={{paddingRight: 20}}>
-  //       <FlatList
-  //         data={filter}
-  //         keyExtractor={index => index.toString()}
-  //         renderItem={renderItem}
-  //         horizontal={true}
-  //         showsHorizontalScrollIndicator={false}
-  //       />
-  //     </View>
-  //   );
-  // };
+  const FilterComponent = ({item, index}) => {
+    return (
+      <View style={{paddingRight: 20}}>
+        <FlatList
+          data={filter}
+          keyExtractor={index => index.toString()}
+          renderItem={renderItem}
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
+    );
+  };
 
   const renderItem = ({item, index}) => {
     return (
@@ -45,17 +45,17 @@ export default function Blog() {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <Header />
       <View style={styles.title}>
         <Text style={[FontFamily.txt, {fontSize: 20, color: 'black',}]}>Blog</Text>
         <Divider />
       </View>
       <View style={{flex: 1}}>
-        {/* <FilterComponent /> */}
+        <FilterComponent />
         <BlogPost />
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
