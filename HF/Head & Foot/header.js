@@ -3,6 +3,7 @@ import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 
+
 const Width = Dimensions.get('window').width;
 
 export default function Header() {
@@ -13,7 +14,7 @@ export default function Header() {
         </TouchableWithoutFeedback>
         <View>
         <Text style={styles.txt}>Classy</Text>
-        <Text style={[styles.txt, {marginLeft:20}]}>Store</Text>
+        <Text style={[styles.txt, {marginLeft:20}, ]}>Store</Text>
 
         </View>
       <View style={styles.rightHead}>
