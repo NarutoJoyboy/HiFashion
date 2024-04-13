@@ -45,17 +45,29 @@ export default function Blog() {
   };
 
   return (
-    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-      <Header />
-      <View style={styles.title}>
-        <Text style={[FontFamily.txt, {fontSize: 20, color: 'black',}]}>Blog</Text>
-        <Divider />
+    <FlatList
+    ListHeaderComponent={
+      <View style={styles.container}>
+    <Header />
+    <View style={styles.title}>
+         <Text style={[FontFamily.txt, {fontSize: 20, color: 'black',}]}>BLOG</Text>
+         <Divider />
       </View>
-      <View style={{flex: 1}}>
+        
+      </View>
+  }
+  data={[1]}
+  keyExtractor={( index) => index.toString()}
+  renderItem={({item, index}) => {
+    return (
+      <View style={{flex: 1, marginBottom:20}}>
         <FilterComponent />
         <BlogPost />
       </View>
-    </ScrollView>
+    );
+  }}
+
+    />
   );
 }
 
@@ -79,5 +91,8 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: 'center',
     alignItems: 'center',
+    marginVertical:20,
+    
+
   },
 });

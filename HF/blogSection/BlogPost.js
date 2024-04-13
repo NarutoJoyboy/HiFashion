@@ -125,7 +125,7 @@ export default function BlogPost() {
         keyExtractor={(item, index) => item.name + index.toString()}
         renderItem={renderItem}
       />
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback  onPress={()=>console.warn('Load more content')}>
         <View style={styles.buttonStyle}>
           <Text style={[styles.Button, FontFamily.txt]}>Load More</Text>
           <Ionicons name="add-sharp" size={22} color={'black'} />
@@ -199,11 +199,15 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontFamily: 'TenorSans-Regular',
     margin: 10,
+    color:'black'
   },
   buttonStyle: {
     flexDirection: 'row',
     justifyContent: 'center',
-    borderWidth: 1,
+    borderWidth: 0.2,
     alignItems: 'center',
+    alignSelf:'center',
+    paddingHorizontal:30,
+    borderColor:'grey',
   },
 });
