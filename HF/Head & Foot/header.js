@@ -2,14 +2,21 @@ import { View, Text, Image, StyleSheet, TouchableWithoutFeedback, Dimensions } f
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import Menu from '../Menu';
+import { useNavigation } from '@react-navigation/native';
 
 
 const Width = Dimensions.get('window').width;
 
 export default function Header() {
+
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback onPress={()=>console.warn('Menu')}>
+      <TouchableWithoutFeedback onPress={()=>navigation.navigate('Menu')}
+      // onPress={()=>navigation.navigate(Menu)}
+      >
         <SimpleLineIcons name='menu' size={25}s color="black"/>
         </TouchableWithoutFeedback>
         <View>

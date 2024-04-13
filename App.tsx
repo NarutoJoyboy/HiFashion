@@ -6,6 +6,7 @@ import Home from './HF/Home';
 import Blog from './HF/blogSection/Blog';
 import MyTheme from './HF/Colors/MyTheme';
 import BlogPostDetails from './HF/blogSection/BlogPostDetails';
+import Menu from './HF/Menu';
 
 export default function App() {
 
@@ -18,6 +19,9 @@ export default function App() {
         <Stack.Screen name='Home' component={Home}/>
         <Stack.Screen name='Blog' component={Blog}/>
         <Stack.Screen name='BlogPostDetails' component={BlogPostDetails}/>
+        <Stack.Screen name='Menu' component={Menu} options={{
+          animation:'slide_from_left'
+        }}/>
       </Stack.Navigator>
     </NavigationContainer>
   )
