@@ -52,6 +52,8 @@ export default function TabBar() {
     );
   };
 
+                                                                                                                                                                                                                                                            
+
   return (
     <View>
       <Animated.FlatList
@@ -67,7 +69,7 @@ export default function TabBar() {
               <Image
                 source={require('../../Icons/image10.png')}
               />
-              {/* <View style={[StyleSheet.absoluteFillObject]}></View> */}
+              <View style={[StyleSheet.absoluteFillObject]}></View>
               
             </View>
           );
@@ -78,11 +80,14 @@ export default function TabBar() {
           return(
             <View key={index} style={{marginSt:4, marginRight:10}}>
               <Text style={{fontSize:18, color:'black', fontFamily:'TenorSans-Regular', textAlign:'center'}}>{item.title}</Text>
+              <View>
               <Divider/>
+              </View>
             </View>
           )
         })}
       </View>
+        <View style={{borderBottomColor:'888888', borderWidth:0.6, position:'absolute', top:45, width:"80%",  }}/>
       </View>
     
   );

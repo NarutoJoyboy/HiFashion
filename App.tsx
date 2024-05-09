@@ -7,6 +7,7 @@ import Blog from './HF/blogSection/Blog';
 import MyTheme from './HF/Colors/MyTheme';
 import BlogPostDetails from './HF/blogSection/BlogPostDetails';
 import Menu from './HF/Menu';
+import button from './components/button';
 
 export default function App() {
 
