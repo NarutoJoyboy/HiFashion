@@ -1,6 +1,8 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Dimensions } from 'react-native'
 import React from 'react'
 import Header from '../Head & Foot/header'
+
+const {width, height} = Dimensions.get('window');
 
 export default function BlogPostDetails({route}) {
 
@@ -8,9 +10,9 @@ export default function BlogPostDetails({route}) {
   return (
     <View>
       <Header/>
-        <Image source={item.image} style={{width: '100%', height: 200}}/>
+        <Image source={item.image} style={{width: width, height: height/3}}/>
       <View>
-        <Text>{item.name}</Text>
+        <Text style={{color:'black'}}>{item.name}</Text>
         <Text>{item.tag}</Text>
         <Text>{item.daysAgo}</Text>
       </View>

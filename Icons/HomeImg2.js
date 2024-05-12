@@ -1,8 +1,7 @@
 import { SvgXml } from "react-native-svg";
 import { Dimensions } from "react-native";
 
-const Width = Dimensions.get('screen').width;
-const Height = Dimensions.get('screen').height;
+
 
 const xml = `
 <svg width="375" height="240" viewBox="0 0 375 240" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -28,5 +27,5 @@ const xml = `
 
 `;
 
-export default HomeImg2 = () => <SvgXml xml={xml} width={Width} height={Height/3.4} />;
+export default HomeImg2 = ({width, height}) => <SvgXml xml={xml} width={width} height={height} />;
 

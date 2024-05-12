@@ -4,6 +4,7 @@ import Divider from './divider';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MyTheme from '../Colors/MyTheme';
 import FontFamily from '../Colors/style';
+import { useNavigation } from '@react-navigation/native';
 
 const list1 = [
   {name: 'About', id: 1, onPress: 'ABout'},
@@ -41,7 +42,8 @@ export const FooterComponent1 = () => {
   );
 };
 
-export const FooterComponent2 = ({navigation}) => {
+export const FooterComponent2 = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.navigationContainer}>
       {list1.map(item => {

@@ -58,7 +58,7 @@ export default function Blog() {
   }
   data={[1]}
   keyExtractor={( index) => index.toString()}
-  renderItem={({item, index}) => {
+  renderItem={() => {
     return (
       <View style={{flex: 1, marginBottom:20}}>
         <FilterComponent />

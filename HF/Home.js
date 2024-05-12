@@ -23,10 +23,12 @@ import HomeImg1 from '../Icons/HomeImg1';
 import HomeImg2 from '../Icons/HomeImg2';
 import TitleImg from '../Icons/TitleImg';
 import HomeImg3 from '../Icons/HomeImg3';
+import Video from 'react-native-video';
+import SvgIcons from '../Icons/SvgIcons';
 
 const {width, height} = Dimensions.get('screen');
 
-export default function Home({navigation}) {
+export default function Home() {
   const Brnds = [
     {name: 'PRADA', id: 1},
     {name: 'BURBERRY', id: 2},
@@ -129,25 +131,25 @@ export default function Home({navigation}) {
         </View>
         <View style={{alignItems: 'center'}}>
           <Title label={"COLLECTIONS"}/>
-          {/* <Image
-            source={require('../Icons/Frame2.png')}
-            // style={{width: Width}}
-            width={100}
-          /> */}
-          <HomeImg2 />
-          {/* <Image
-            source={require('../Icons/image9.png')}
-            style={styles.collectionImage}
-          /> */}
-          <HomeImg3 width={width} height={height} />
-          <Image
-            source={require('../Icons/Video.png')}
-            style={styles.videoImage}
+          <HomeImg2 width={width} height={height/3}/>
+          <HomeImg3 width={width/1.4} height={height/2.5} />
+          <Video source={require('../Icons/1.1.mp4')}
+          controls={true}                      
+          ref={(ref) => {
+            this.player = ref
+          }}                                      
+          onBuffer={this.onBuffer}                
+          onError={this.videoError}               
+          style={{width:width, height:height/3.5}}
+          resizeMode={'contains'}
+          fullscreen={true}
           />
         </View>
         <View>
           <Title label={"Just For You"}/>
           <Divider />
+          <View style={{marginTop:20}}>
+
           <FlatList
             data={[1, 2, 3]}
             keyExtractor={item => item.toString()}
@@ -160,11 +162,11 @@ export default function Home({navigation}) {
                     <Image
                       source={require('../Icons/Frame2.png')}
                       style={{
-                        width: width / 1.5,
-                        height: height / 2.5,
-                        margin: 10,
+                        width: width / 1.7,
+                        height: height / 2.7,
+                        marginLeft: 10,
                       }}
-                    />
+                      />
                   </View>
                   <Text style={styles.txt5}>
                     Harris Tweed Three Button Jacket
@@ -173,11 +175,15 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
               );
             }}
-          />
+            />
+            </View>
         </View>
 
         <View style={styles.classyStoreContainer}>
-          <TitleImg />
+          <View style={{marginVertical:15}}>
+          <TitleImg width={width/5} height={height/20}/>
+
+          </View>
           <Text style={styles.classyStoreText}>
             Making a luxurious lifestyle accessible for a generous group of
             women is our daily drive
@@ -195,11 +201,12 @@ export default function Home({navigation}) {
                     alignItems: 'center',
                   }}>
                   <Image source={item.img} />
-                  <Text style={{textAlign: 'center'}}>{item.name}</Text>
+                  <Text style={{textAlign: 'center', fontFamily:FontFamily.txt.fontFamily, color:MyTheme.colors.txtColor }}>{item.name}</Text>
                 </View>
               );
             })}
           </View>
+          <SvgIcons width={width/3.9} height={height/8}/>
         </View>
 
         <FooterComponent1 />
@@ -215,16 +222,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'white',
   },
-  txt1: {
-    fontSize: 45,
-    color: 'white',
-    fontFamily: FontFamily.txt.fontFamily,
-  },
   txt2: {
     fontSize: 20,
     alignItems: 'center',
     fontFamily: FontFamily.txt.fontFamily,
-    color: 'black',
+    color: MyTheme.colors.txtColor,
   },
   txt3: {
     fontSize: 17,
@@ -240,6 +242,11 @@ const styles = StyleSheet.create({
   },
   classyStoreText: {
     fontSize: 16,
+    fontFamily: FontFamily.txt.fontFamily,
+    textAlign: 'center',
+    width: width / 1.3,
+    marginBottom:10,
+    color:MyTheme.colors.txtColor,
   },
 
   // Image Styles
@@ -284,7 +291,7 @@ const styles = StyleSheet.create({
   txt5: {
     fontSize: 15,
     fontFamily: FontFamily.txt.fontFamily,
-    color: 'black',
+    color: MyTheme.colors.txtColor,
     margin: 10,
     textAlign: 'center',
     width: width / 1.6,

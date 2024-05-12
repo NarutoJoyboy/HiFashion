@@ -27,35 +27,35 @@ export default function BlogPost() {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../../Icons/image9.png'),
+      image: require('../../Icons/Rectangle.png'),
       
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../../Icons/image9.png'),
+      image: require('../../Icons/Rectangle.png'),
       
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../../Icons/image9.png'),
+      image: require('../../Icons/Rectangle.png'),
       
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../../Icons/image9.png'),
+      image: require('../../Icons/Rectangle.png'),
       
     },
     {
       name: '2021 STYLE GUIDE: The Biggest Fall Trends',
       tag: ['Fashion', 'Tips'],
       daysAgo: 2,
-      image: require('../../Icons/image9.png'),
+      image: require('../../Icons/Rectangle.png'),
       
     },
   ];
