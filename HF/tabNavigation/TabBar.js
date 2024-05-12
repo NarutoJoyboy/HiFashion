@@ -66,11 +66,7 @@ export default function TabBar() {
         renderItem={({item}) => {
           return (
             <View style={{width: Width, height: Height}}>
-              <Image
-                source={require('../../Icons/image10.png')}
-              />
               <View style={[StyleSheet.absoluteFillObject]}></View>
-              
             </View>
           );
         }}

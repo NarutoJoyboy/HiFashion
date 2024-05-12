@@ -11,22 +11,20 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Menu from '../Menu';
 import {useNavigation} from '@react-navigation/native';
+import TitleImg from '../../Icons/TitleImg';
 
-const Width = Dimensions.get('window').width;
+const {width, height} = Dimensions.get('screen');
 
 export default function Header() {
   const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <TouchableWithoutFeedback
-        onPress={() => navigation.navigate('Menu')}
-      >
+      <TouchableWithoutFeedback onPress={() => navigation.navigate('Menu')}>
         <SimpleLineIcons name="menu" size={25} s color="black" />
       </TouchableWithoutFeedback>
-      <View>
-        <Text style={styles.txt}>Classy</Text>
-        <Text style={[styles.txt, {marginLeft: 20}]}>Store</Text>
+      <View style={{marginLeft: width / 7}}>
+        <TitleImg width={width / 5} height={height / 26} />
       </View>
       <View style={styles.rightHead}>
         <TouchableWithoutFeedback onPress={() => console.warn('Search')}>
@@ -56,7 +54,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: 10,
+    padding: 10,
+    backgroundColor: '#E7EAEF',
   },
   rightHead: {
     flexDirection: 'row',

@@ -19,9 +19,12 @@ import {
 } from './Head & Foot/footerComponent1';
 import MyTheme from './Colors/MyTheme';
 import FontFamily from './Colors/style';
+import HomeImg1 from '../Icons/HomeImg1';
+import HomeImg2 from '../Icons/HomeImg2';
+import TitleImg from '../Icons/TitleImg';
+import HomeImg3 from '../Icons/HomeImg3';
 
-const Width = Dimensions.get('window').width;
-const Height = Dimensions.get('window').height;
+const {width, height} = Dimensions.get('screen');
 
 export default function Home({navigation}) {
   const Brnds = [
@@ -56,49 +59,32 @@ export default function Home({navigation}) {
     },
   ];
 
+  const Title = ({label}) => {
+    return (
+      <View
+        style={{
+          alignSelf: 'center',
+          alignItems: 'center',
+          marginVertical: 15,
+        }}>
+        <Text style={styles.txt2}>{label}</Text>
+      </View>
+    );
+  };
+
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View>
         <Header />
-        <View>
-          <Image
-            source={require('../Icons/image10.png')}
-            style={{width: Width}}
-          />
-          <View
-            style={{
-              position: 'absolute',
-              top: Height / 2.5,
-              alignItems: 'center',
-              justifyContent: 'center',
-              alignSelf: 'center',
-            }}>
-            <Text style={[styles.txt1]}>LUXURY</Text>
-            <Text style={styles.txt1}>FASHION</Text>
-            <Text style={styles.txt1}>ACCESSORIES</Text>
-          </View>
-          <View
-            style={{
-              position: 'absolute',
-              top: Height / 1.6,
-              alignSelf: 'center',
-            }}>
+        <View style={{backgroundColor:'#E7EAEF'}}>
+          <HomeImg1 width={width} height={height/1.39}/>
             <TouchableOpacity style={styles.explorebut}>
               <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
             </TouchableOpacity>
-          </View>
         </View>
-
-        <View
-          style={{
-            alignSelf: 'center',
-            alignItems: 'center',
-            marginVertical: 15,
-          }}>
-          <Text style={styles.txt2}>NEW ARRIVAL</Text>
-          <Divider />
-        </View>
-        <View style={{flex: 1, height: Height}}>
+        <Title label={'NEW ARRIVAL'} />
+        <Divider />
+        <View style={{flex: 1, height: height}}>
           {/* <Collectiontabs /> */}
         </View>
         <View
@@ -142,22 +128,25 @@ export default function Home({navigation}) {
           <Divider />
         </View>
         <View style={{alignItems: 'center'}}>
-          <Text style={styles.txt4}>COLLECTIONS</Text>
-          <Image
+          <Title label={"COLLECTIONS"}/>
+          {/* <Image
             source={require('../Icons/Frame2.png')}
-            style={{width: Width}}
-          />
-          <Image
+            // style={{width: Width}}
+            width={100}
+          /> */}
+          <HomeImg2 />
+          {/* <Image
             source={require('../Icons/image9.png')}
             style={styles.collectionImage}
-          />
+          /> */}
+          <HomeImg3 width={width} height={height} />
           <Image
             source={require('../Icons/Video.png')}
             style={styles.videoImage}
           />
         </View>
         <View>
-          <Text style={styles.txt2}>Just for you</Text>
+          <Title label={"Just For You"}/>
           <Divider />
           <FlatList
             data={[1, 2, 3]}
@@ -171,8 +160,8 @@ export default function Home({navigation}) {
                     <Image
                       source={require('../Icons/Frame2.png')}
                       style={{
-                        width: Width / 1.5,
-                        height: Height / 2.5,
+                        width: width / 1.5,
+                        height: height / 2.5,
                         margin: 10,
                       }}
                     />
@@ -188,7 +177,7 @@ export default function Home({navigation}) {
         </View>
 
         <View style={styles.classyStoreContainer}>
-          <Text>Classy Store</Text>
+          <TitleImg />
           <Text style={styles.classyStoreText}>
             Making a luxurious lifestyle accessible for a generous group of
             women is our daily drive
@@ -201,7 +190,7 @@ export default function Home({navigation}) {
                   key={item.id}
                   style={{
                     margin: 10,
-                    width: Width / 2.4,
+                    width: width / 2.4,
                     alignSelf: 'center',
                     alignItems: 'center',
                   }}>
@@ -255,13 +244,13 @@ const styles = StyleSheet.create({
 
   // Image Styles
   collectionImage: {
-    width: Width / 1.4,
+    width: width / 1.4,
     marginTop: 30,
     marginBottom: 10,
   },
   videoImage: {
-    width: Width,
-    height: Height / 3,
+    width: width,
+    height: height / 3,
   },
 
   // Container Styles
@@ -282,6 +271,9 @@ const styles = StyleSheet.create({
     width: 270,
     padding: 10,
     opacity: 0.6,
+    position: 'absolute',
+    top: height / 1.6,
+    alignSelf: 'center',
   },
   explorebutstyle: {
     color: 'white',
@@ -295,14 +287,14 @@ const styles = StyleSheet.create({
     color: 'black',
     margin: 10,
     textAlign: 'center',
-    width: Width / 1.6,
+    width: width / 1.6,
   },
   txt6: {
     fontSize: 15,
     fontFamily: FontFamily.txt.fontFamily,
     color: 'rgba(221,133,96, 1)',
     textAlign: 'center',
-    width: Width / 1.5,
+    width: width / 1.5,
     marginBottom: 20,
   },
 });
