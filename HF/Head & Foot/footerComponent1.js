@@ -37,7 +37,6 @@ export const FooterComponent1 = () => {
         </TouchableWithoutFeedback>
         <Text style={styles.txt}>08:00 - 22:00 - Everyday</Text>
       </View>
-      <Divider/>
     </View>
   );
 };

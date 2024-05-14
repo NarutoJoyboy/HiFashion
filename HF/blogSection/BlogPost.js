@@ -6,14 +6,11 @@ import {
   FlatList,
   StyleSheet,
   Dimensions,
-  TouchableOpacity,
-  Button,
 } from 'react-native';
 import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';
 import FontFamily from '../Colors/style';
-import BlogPostDetails from './BlogPostDetails';
 import {useNavigation} from '@react-navigation/native';
 
 const Width = Dimensions.get('window').width;
@@ -125,12 +122,6 @@ export default function BlogPost() {
         keyExtractor={(item, index) => item.name + index.toString()}
         renderItem={renderItem}
       />
-      <TouchableWithoutFeedback  onPress={()=>console.warn('Load more content')}>
-        <View style={styles.buttonStyle}>
-          <Text style={[styles.Button, FontFamily.txt]}>Load More</Text>
-          <Ionicons name="add-sharp" size={22} color={'black'} />
-        </View>
-      </TouchableWithoutFeedback>
     </View>
   );
 }
@@ -195,19 +186,5 @@ const styles = StyleSheet.create({
     fontFamily: 'TenorSans-Regular',
     fontSize: 12,
   },
-  Button: {
-    fontSize: 19,
-    fontFamily: 'TenorSans-Regular',
-    margin: 10,
-    color:'black'
-  },
-  buttonStyle: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    borderWidth: 0.2,
-    alignItems: 'center',
-    alignSelf:'center',
-    paddingHorizontal:30,
-    borderColor:'grey',
-  },
+  
 });

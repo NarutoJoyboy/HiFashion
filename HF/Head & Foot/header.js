@@ -36,7 +36,7 @@ export default function Header() {
             style={styles.search}
           />
         </TouchableWithoutFeedback>
-        <TouchableWithoutFeedback onPress={() => console.warn('Cart')}>
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>
           <SimpleLineIcons
             name="handbag"
             size={25}

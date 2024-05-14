@@ -210,6 +210,7 @@ export default function Home() {
         </View>
 
         <FooterComponent1 />
+        <Divider />
         <FooterComponent2 />
       </View>
     </ScrollView>

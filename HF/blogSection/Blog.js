@@ -15,7 +15,7 @@ import Divider from '../Head & Foot/divider';
 import Header from '../Head & Foot/header';
 import BlogPost from './BlogPost';
 import FontFamily from '../Colors/style';
-
+import {FooterComponent1} from '../Head & Foot/footerComponent1';
 
 export default function Blog() {
   const filter = ['Fashion', 'Promo', 'Policy', 'Lookbook', 'Sale'];
@@ -36,9 +36,9 @@ export default function Blog() {
 
   const renderItem = ({item, index}) => {
     return (
-      <View style={styles.filterstyle} >
-        <TouchableWithoutFeedback >
-        <Text style={styles.filtertext}>{item}</Text>
+      <View style={styles.filterstyle}>
+        <TouchableWithoutFeedback>
+          <Text style={styles.filtertext}>{item}</Text>
         </TouchableWithoutFeedback>
       </View>
     );
@@ -46,27 +46,39 @@ export default function Blog() {
 
   return (
     <FlatList
-    ListHeaderComponent={
-      <View style={styles.container}>
-    <Header />
-    <View style={styles.title}>
-         <Text style={[FontFamily.txt, {fontSize: 20, color: 'black',}]}>BLOG</Text>
-         <Divider />
-      </View>
-        
-      </View>
-  }
-  data={[1]}
-  keyExtractor={( index) => index.toString()}
-  renderItem={() => {
-    return (
-      <View style={{flex: 1, marginBottom:20}}>
-        <FilterComponent />
-        <BlogPost />
-      </View>
-    );
-  }}
-
+      ListHeaderComponent={
+        <View style={styles.container}>
+          <Header />
+          <View style={styles.title}>
+            <Text style={[FontFamily.txt, {fontSize: 20, color: 'black'}]}>
+              BLOG
+            </Text>
+            <Divider />
+          </View>
+        </View>
+      }
+      ListFooterComponent={
+        <View>
+          <TouchableWithoutFeedback
+            onPress={() => console.warn('Load more content')}>
+            <View style={styles.buttonStyle}>
+              <Text style={[styles.Button, FontFamily.txt]}>Load More</Text>
+              <Ionicons name="add-sharp" size={22} color={'black'} />
+            </View>
+          </TouchableWithoutFeedback>
+          <FooterComponent1 />
+        </View>
+      }
+      data={[1]}
+      keyExtractor={index => index.toString()}
+      renderItem={() => {
+        return (
+          <View style={{flex: 1, marginBottom: 20}}>
+            <FilterComponent />
+            <BlogPost />
+          </View>
+        );
+      }}
     />
   );
 }
@@ -91,8 +103,21 @@ const styles = StyleSheet.create({
   title: {
     alignSelf: 'center',
     alignItems: 'center',
-    marginVertical:20,
-    
-
+    marginVertical: 20,
+  },
+  Button: {
+    fontSize: 19,
+    fontFamily: 'TenorSans-Regular',
+    margin: 10,
+    color: 'black',
+  },
+  buttonStyle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderWidth: 0.2,
+    alignItems: 'center',
+    alignSelf: 'center',
+    paddingHorizontal: 30,
+    borderColor: 'grey',
   },
 });
