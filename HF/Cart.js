@@ -13,16 +13,27 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 
 export default function Cart() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.title}>
-      <FontAwesome6 name='arrow-left' size={25} color={'black'}  />
+
+
+  const Header = () => {
+    return (
+      <View style={styles.header}>
+        <View>
+          <FontAwesome6 name='arrow-left' size={25} color={"black"}/>
+        </View>
+        <View>
         <Text style={[FontFamily.txt, {fontSize: 20, color: 'black'}]}>
           CART
         </Text>
         <Divider />
+        </View>
       </View>
+    );
+  }
 
+  return (
+    <View style={styles.container}>
+     <Header />
       
     </View>
   );
@@ -32,6 +43,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+  },
+  header:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: 'grey'
   },
   title: {
     alignSelf: 'center',

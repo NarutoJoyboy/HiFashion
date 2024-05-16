@@ -133,7 +133,7 @@ export default function Home() {
           <Title label={"COLLECTIONS"}/>
           <HomeImg2 width={width} height={height/3}/>
           <HomeImg3 width={width/1.4} height={height/2.5} />
-          <Video source={require('../Icons/1.1.mp4')}
+          {/* <Video source={require('../Icons/1.1.mp4')}
           controls={true}                      
           ref={(ref) => {
             this.player = ref
@@ -143,7 +143,7 @@ export default function Home() {
           style={{width:width, height:height/3.5}}
           resizeMode={'contains'}
           fullscreen={true}
-          />
+          /> */}
         </View>
         <View>
           <Title label={"Just For You"}/>
