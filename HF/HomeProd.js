@@ -21,19 +21,19 @@ export default function HomeProd() {
         keyExtractor={(item) => item.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
-        scroll
+        pagingEnabled
         renderItem={({item}) => {
             return(
-                <HomeImg1 width={width} height={height} />
+                <HomeImg1 width={width} height={height}/>
             )
         }}
         />
         <Animated.View style={styles.containerfilterBox}>
             <View style={styles.containerfilter}>
 
-            {FilterData.map(item => {
+            {FilterData.map((item) => {
                 return (
-                    <View style={styles.filterBox}>
+                    <View style={styles.filterBox} key={item.id}>
                     <Text key={item.id} style={styles.txtfilter}>
                         {item.name}
                     </Text>
