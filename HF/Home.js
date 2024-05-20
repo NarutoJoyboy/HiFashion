@@ -25,7 +25,7 @@ import TitleImg from '../Icons/TitleImg';
 import HomeImg3 from '../Icons/HomeImg3';
 import Video from 'react-native-video';
 import SvgIcons from '../Icons/SvgIcons';
-import HomeProd from './HomeProd';
+import HomeTabs from './HomeTabs';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -88,7 +88,7 @@ export default function Home() {
         <Title label={'NEW ARRIVAL'} />
         <Divider />
         <View style={{flex: 1, height: height}}>
-          <HomeProd />
+          <HomeTabs />
         </View>
         <View
           style={{
