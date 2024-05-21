@@ -23,18 +23,38 @@ export default function HomeTabs() {
     {name: 'Bag', id: 5},
   ];
 
+  const Image = <HomeImg1 width={width} height={height/1.2} />
+
+  const TabData = [
+    {image: "Prem", id: 1},
+    {image: "Ram", id: 2},
+    {image: "Shyam", id: 3},
+    {image: "GhanShyam", id: 4},
+    {image: "Laxman", id: 5},
+  ]
+
   const [tabNo, setTabNo] = useState(FilterData[0].id);
 
   return (
     <Animated.View style={styles.container}>
-      <FlatList
-        data={[1, 2, 3, 4, 5]}
-        keyExtractor={item => item.toString()}
+      <Animated.FlatList
+        data={TabData}
+        // keyExtractor={item => item.toString()}
         horizontal
         showsHorizontalScrollIndicator={false}
         pagingEnabled
         renderItem={({item}) => {
-          return <HomeImg1 width={width} height={height} />;
+          return (
+            <View  key={item.id}>
+
+            { item.id === tabNo && <View>
+                {/* <HomeImg1 width={width} height={height/1.2} /> */}
+                {/* {item.image} */}
+                <Text style={{color:'black', fontSize:30}}>{item.image}</Text>
+                <Text style={{color:'black', position:'absolute', top:20}}>{tabNo} my nmae is Prem</Text>
+            </View>}
+            </View>
+        );
         }}
       />
       <Animated.View style={styles.containerfilterBox}>
@@ -44,12 +64,16 @@ export default function HomeTabs() {
               <TouchableOpacity
                 style={styles.filterBox}
                 key={item.id}
-                activeOpacity={0.6}>
-                <Text key={item.id} style={styles.txtfilter}>
+                activeOpacity={0.6}
+                onPress={() => setTabNo(item.id)}
+                >
+                <Text key={item.id} style={[styles.txtfilter, tabNo===item.id && styles.txtfilterActive]}>
                   {item.name}
                 </Text>
-                <View style={styles.box}></View>
-                {}
+                
+                { tabNo===item.id && <View style={styles.box}></View>
+
+                }
               </TouchableOpacity>
             );
           })}
@@ -81,9 +105,14 @@ const styles = StyleSheet.create({
   },
   txtfilter: {
     fontSize: 18,
-    color: 'black',
+    color: '#888888',
     fontFamily: FontFamily.txt.fontFamily,
+    opacity: 0.6,
   },
+    txtfilterActive: {
+        color: '#212806',
+        fontSize: 20,
+    },
   box: {
     width: 5,
     backgroundColor: '#DD8560',

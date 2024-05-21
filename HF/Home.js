@@ -26,10 +26,13 @@ import HomeImg3 from '../Icons/HomeImg3';
 import Video from 'react-native-video';
 import SvgIcons from '../Icons/SvgIcons';
 import HomeTabs from './HomeTabs';
+import { useNavigation } from '@react-navigation/native';
 
 const {width, height} = Dimensions.get('screen');
 
 export default function Home() {
+
+  const navigation = useNavigation();
   const Brnds = [
     {name: 'PRADA', id: 1},
     {name: 'BURBERRY', id: 2},
@@ -96,7 +99,7 @@ export default function Home() {
             justifyContent: 'center',
             alignContent: 'center',
           }}>
-          <TouchableWithoutFeedback>
+          <TouchableOpacity onPress={()=> navigation.navigate('ProductSection')} activeOpacity={0.6}>
             <View
               style={{
                 marginBottom: 20,
@@ -109,7 +112,7 @@ export default function Home() {
               {/* <Image source={require('../Icons/ForwardArrow.png')}/> */}
               <AntDesign name="arrowright" size={20} color={'black'} />
             </View>
-          </TouchableWithoutFeedback>
+          </TouchableOpacity>
           <Divider />
         </View>
 

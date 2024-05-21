@@ -8,6 +8,7 @@ import MyTheme from './HF/Colors/MyTheme';
 import BlogPostDetails from './HF/blogSection/BlogPostDetails';
 import Menu from './HF/Menu';
 import Cart from './HF/Cart';
+import ProductSection from './HF/ProductSection';
 
 export default function App() {
 
@@ -24,6 +25,7 @@ export default function App() {
           animation:'slide_from_left'
         }}/>
         <Stack.Screen name='Cart' component={Cart} />
+        <Stack.Screen name='ProductSection' component={ProductSection} />
       </Stack.Navigator>
     </NavigationContainer>
   )
