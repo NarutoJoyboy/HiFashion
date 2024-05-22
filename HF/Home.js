@@ -304,7 +304,7 @@ const styles = StyleSheet.create({
   txt6: {
     fontSize: 15,
     fontFamily: FontFamily.txt.fontFamily,
-    color: 'rgba(221,133,96, 1)',
+    color: MyTheme.colors.priceColor,
     textAlign: 'center',
     width: width / 1.5,
     marginBottom: 20,

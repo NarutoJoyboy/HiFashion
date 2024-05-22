@@ -8,6 +8,7 @@ const MyTheme = {
         btnColor: 'black',
         txtColor: 'black',
         dividerColor: 'grey',
+        priceColor: 'rgba(221,133,96, 1)',
 
 
     },
