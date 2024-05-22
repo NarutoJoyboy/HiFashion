@@ -6,7 +6,7 @@ import {
   StyleSheet,
   FlatList,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from './Head & Foot/header';
 import Filter from '../Icons/filter';
 import ListView from '../Icons/ListView';
@@ -15,10 +15,21 @@ import MyTheme from './Colors/MyTheme';
 import FontFamily from './Colors/style';
 import Feather from 'react-native-vector-icons/Feather';
 import ProductCard from './ProductCard';
+import { getProducts } from './firebase/System';
+
 
 const {width, height} = Dimensions.get('screen');
 
 export default function ProductSection() {
+
+  const [productData, setProductData] = useState([])
+
+  useEffect(() => {
+    const ppp =  getProducts();
+
+    console.log('....................................', ppp)
+  }, [])
+  
   const FilterComponent = () => {
     return (
       <View style={styles.container}>
@@ -96,12 +107,12 @@ export default function ProductSection() {
           </View>
         }
         
-        data={ProductData}
+        data={productData}
         keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         renderItem={({item}) => {
           return (
-            <ProductCard item = {item}/>
+            <ProductCard item = {item._data}/>
           );
         }}
       />
@@ -140,15 +151,3 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
 });
-
-
-const ProductData = [
-  { name : '21WN', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan hjbvjdfhb my name is Prem'},
-  { name : 'lame', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan'},
-  { name : 'Mohan', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan'},
-  { name : 'lamereri', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan'},
-  { name : 'Ring', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan'},
-  { name : 'Necklace', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan'},
-  { name : 'Bangles', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan'},
-  { name : 'Tshirt', price :120 , img : 'HomeImg1', productDetails:'reversible angora cardigan'},
-]
