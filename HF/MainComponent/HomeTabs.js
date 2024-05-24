@@ -9,8 +9,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import FontFamily from './Colors/style';
-import HomeImg1 from '../Icons/HomeImg1';
+import FontFamily from '../Colors/style';
+import HomeImg1 from '../../Icons/HomeImg1';
 
 const {width, height} = Dimensions.get('screen');
 

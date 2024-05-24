@@ -1,6 +1,6 @@
 import {View, Text, Modal, TouchableWithoutFeedback} from 'react-native';
 import React, {useState} from 'react';
-import TabBar from './tabNavigation/TabBar';
+import TabBar from '../tabNavigation/TabBar';
 import Feather from 'react-native-vector-icons/Feather';
 import { useNavigation } from '@react-navigation/native';
 

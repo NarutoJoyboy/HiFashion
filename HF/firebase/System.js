@@ -4,5 +4,5 @@ const fr = firestore();
 
 export const getProducts = async () => {
     const product = await fr.collection('products').get();
-    return product;
+    return product.docs.map(doc => doc.data());
 }

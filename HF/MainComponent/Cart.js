@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import React, {useState} from 'react';
-import Divider from './Head & Foot/divider';
-import FontFamily from './Colors/style';
+import Divider from '../Head & Foot/divider';
+import FontFamily from '../Colors/style';
 import Antdesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {useNavigation} from '@react-navigation/native';

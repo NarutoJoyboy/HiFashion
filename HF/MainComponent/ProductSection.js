@@ -7,15 +7,15 @@ import {
   FlatList,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import Header from './Head & Foot/header';
-import Filter from '../Icons/filter';
-import ListView from '../Icons/ListView';
+import Header from '../Head & Foot/header';
+import Filter from '../../Icons/filter';
+import ListView from '../../Icons/ListView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import MyTheme from './Colors/MyTheme';
-import FontFamily from './Colors/style';
+import MyTheme from '../Colors/MyTheme';
+import FontFamily from '../Colors/style';
 import Feather from 'react-native-vector-icons/Feather';
 import ProductCard from './ProductCard';
-import { getProducts } from './firebase/System';
+import { getProducts } from '../firebase/System';
 
 
 const {width, height} = Dimensions.get('screen');

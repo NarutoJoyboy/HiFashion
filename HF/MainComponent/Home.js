@@ -11,20 +11,17 @@ import {
   FlatList,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Divider from './Head & Foot/divider';
-import Header from './Head & Foot/header';
-import {
-  FooterComponent1,
-  FooterComponent2,
-} from './Head & Foot/footerComponent1';
-import MyTheme from './Colors/MyTheme';
-import FontFamily from './Colors/style';
-import HomeImg1 from '../Icons/HomeImg1';
-import HomeImg2 from '../Icons/HomeImg2';
-import TitleImg from '../Icons/TitleImg';
-import HomeImg3 from '../Icons/HomeImg3';
+import Divider from '../Head & Foot/divider';
+import Header from '../Head & Foot/header';
+import {FooterComponent1, FooterComponent2} from "../Head & Foot/footerComponent1"
+import MyTheme from '../Colors/MyTheme';
+import FontFamily from '../Colors/style';
+import HomeImg1 from '../../Icons/HomeImg1';
+import HomeImg2 from '../../Icons/HomeImg2';
+import TitleImg from '../../Icons/TitleImg';
+import HomeImg3 from '../../Icons/HomeImg3';
 import Video from 'react-native-video';
-import SvgIcons from '../Icons/SvgIcons';
+import SvgIcons from '../../Icons/SvgIcons';
 import HomeTabs from './HomeTabs';
 import { useNavigation } from '@react-navigation/native';
 
@@ -44,22 +41,22 @@ export default function Home() {
 
   const ShippingDetails = [
     {
-      img: require('../Icons/sticker1.png'),
+      img: require('../../Icons/sticker1.png'),
       name: 'Fast shipping Free on order above $25.',
       id: 1,
     },
     {
-      img: require('../Icons/sticker2.png'),
+      img: require('../../Icons/sticker2.png'),
       name: 'Sustainable process from start to finish.',
       id: 2,
     },
     {
-      img: require('../Icons/sticker3.png'),
+      img: require('../../Icons/sticker3.png'),
       name: 'Unique designs and high quality materials.',
       id: 3,
     },
     {
-      img: require('../Icons/sticker4.png'),
+      img: require('../../Icons/sticker4.png'),
       name: 'Giving priority to customers satisfaction.',
       id: 4,
     },
@@ -164,7 +161,7 @@ export default function Home() {
                 <TouchableOpacity activeOpacity={0.5}>
                   <View>
                     <Image
-                      source={require('../Icons/Frame2.png')}
+                      source={require('../../Icons/Frame2.png')}
                       style={{
                         width: width / 1.7,
                         height: height / 2.7,

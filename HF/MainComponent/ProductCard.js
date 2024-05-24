@@ -1,8 +1,8 @@
 import {View, Text, Dimensions, StyleSheet, TouchableOpacity} from 'react-native';
 import React from 'react';
-import HomeImg1 from '../Icons/HomeImg1';
-import FontFamily from './Colors/style';
-import MyTheme from './Colors/MyTheme';
+import HomeImg1 from '../../Icons/HomeImg1';
+import FontFamily from '../Colors/style';
+import MyTheme from '../Colors/MyTheme';
 
 const {width, height} = Dimensions.get('screen');
 
