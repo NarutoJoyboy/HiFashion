@@ -16,6 +16,7 @@ import FontFamily from '../Colors/style';
 import Feather from 'react-native-vector-icons/Feather';
 import ProductCard from './ProductCard';
 import { getProducts } from '../firebase/System';
+import { useStore } from '../Zustand/UseStore';
 
 
 const {width, height} = Dimensions.get('screen');
@@ -24,12 +25,8 @@ export default function ProductSection() {
 
   const [productData, setProductData] = useState([])
 
-  useEffect(() => {
-    const ppp =  getProducts();
 
-    console.log('....................................', ppp)
-  }, [])
-  
+
   const FilterComponent = () => {
     return (
       <View style={styles.container}>

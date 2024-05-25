@@ -9,6 +9,7 @@ import BlogPostDetails from './HF/blogSection/BlogPostDetails';
 import Menu from './HF/MainComponent/Menu';
 import Cart from './HF/MainComponent/Cart';
 import ProductSection from './HF/MainComponent/ProductSection';
+import Contact from './HF/Head & Foot/Contact';
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
         }}/>
         <Stack.Screen name='Cart' component={Cart} />
         <Stack.Screen name='ProductSection' component={ProductSection} />
+        <Stack.Screen name='Contact' component={Contact}
       </Stack.Navigator>
     </NavigationContainer>
   )

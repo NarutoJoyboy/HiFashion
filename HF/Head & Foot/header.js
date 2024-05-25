@@ -9,7 +9,6 @@ import {
 import React from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import Menu from '../MainComponent/Menu';
 import {useNavigation} from '@react-navigation/native';
 import TitleImg from '../../Icons/TitleImg';
 

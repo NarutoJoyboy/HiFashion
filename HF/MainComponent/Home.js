@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -24,10 +24,18 @@ import Video from 'react-native-video';
 import SvgIcons from '../../Icons/SvgIcons';
 import HomeTabs from './HomeTabs';
 import { useNavigation } from '@react-navigation/native';
-
+import { getProducts, getBrands } from '../firebase/System';
 const {width, height} = Dimensions.get('screen');
 
+
+
 export default function Home() {
+
+ useEffect(() => {
+    console.log('getProducts..................................')
+ }, []);
+
+ console.log('prod', prod);
 
   const navigation = useNavigation();
   const Brnds = [
