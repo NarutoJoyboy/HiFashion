@@ -25,17 +25,13 @@ import SvgIcons from '../../Icons/SvgIcons';
 import HomeTabs from './HomeTabs';
 import { useNavigation } from '@react-navigation/native';
 import { getProducts, getBrands } from '../firebase/System';
+import { Title } from '../ImpComponent/Title';
 const {width, height} = Dimensions.get('screen');
 
 
 
 export default function Home() {
 
- useEffect(() => {
-    console.log('getProducts..................................')
- }, []);
-
- console.log('prod', prod);
 
   const navigation = useNavigation();
   const Brnds = [
@@ -70,18 +66,7 @@ export default function Home() {
     },
   ];
 
-  const Title = ({label}) => {
-    return (
-      <View
-        style={{
-          alignSelf: 'center',
-          alignItems: 'center',
-          marginVertical: 15,
-        }}>
-        <Text style={styles.txt2}>{label}</Text>
-      </View>
-    );
-  };
+ 
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -93,8 +78,7 @@ export default function Home() {
               <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
             </TouchableOpacity>
         </View>
-        <Title label={'NEW ARRIVAL'} />
-        <Divider />
+        <Title label={'NEW ARRIVAL'}/>
         <View style={{flex: 1, height: height}}>
           <HomeTabs />
         </View>
@@ -126,6 +110,7 @@ export default function Home() {
             flexWrap: 'wrap',
             flexDirection: 'row',
             justifyContent: 'center',
+            marginBottom:60,
           }}>
           {Brnds.map(item => {
             return (
@@ -156,7 +141,6 @@ export default function Home() {
         </View>
         <View>
           <Title label={"Just For You"}/>
-          <Divider />
           <View style={{marginTop:20}}>
 
           <FlatList

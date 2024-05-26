@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   container: {
     // alignItems: 'center',
     alignSelf: 'center',
+    marginVertical: 10,
   },
   divider: {
     flexDirection: 'row',

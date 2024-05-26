@@ -27,7 +27,7 @@ export default function App() {
         }}/>
         <Stack.Screen name='Cart' component={Cart} />
         <Stack.Screen name='ProductSection' component={ProductSection} />
-        <Stack.Screen name='Contact' component={Contact}
+        <Stack.Screen name='Contact' component={Contact}/>
       </Stack.Navigator>
     </NavigationContainer>
   )

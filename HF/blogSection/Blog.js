@@ -16,6 +16,7 @@ import Header from '../Head & Foot/header';
 import BlogPost from './BlogPost';
 import FontFamily from '../Colors/style';
 import {FooterComponent1} from '../Head & Foot/footerComponent1';
+import { Title } from '../ImpComponent/Title';
 
 export default function Blog() {
   const filter = ['Fashion', 'Promo', 'Policy', 'Lookbook', 'Sale'];
@@ -49,12 +50,7 @@ export default function Blog() {
       ListHeaderComponent={
         <View style={styles.container}>
           <Header />
-          <View style={styles.title}>
-            <Text style={[FontFamily.txt, {fontSize: 20, color: 'black'}]}>
-              BLOG
-            </Text>
-            <Divider />
-          </View>
+          <Title label={"BLOG"}/>
         </View>
       }
       ListFooterComponent={
