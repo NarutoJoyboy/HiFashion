@@ -11,7 +11,8 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {useNavigation} from '@react-navigation/native';
 import TitleImg from '../../Icons/TitleImg';
-
+import IconButton from '../ImpComponent/IconButton';
+import { IconSets } from '../ImpComponent/Icons';
 const {width, height} = Dimensions.get('screen');
 
 export default function Header() {
@@ -20,28 +21,29 @@ export default function Header() {
   return (
     <View style={styles.container}>
       <TouchableWithoutFeedback onPress={() => navigation.navigate('Menu')}>
-        <SimpleLineIcons name="menu" size={25} s color="black" />
+        {/* <Icon iconSet={IconSets.SimpleLineIcons} name={"menu"} size={25} color={'black'}></Icon> */}
+        <IconButton fontType={IconSets.SimpleLineIcons} name={'menu'} size={25} color={'black'}/>
       </TouchableWithoutFeedback>
       <View style={{marginLeft: width / 7}}>
         <TitleImg width={width / 5} height={height / 26} />
       </View>
       <View style={styles.rightHead}>
         <TouchableWithoutFeedback onPress={() => console.warn('Search')}>
-          <AntDesign
+          {/* <AntDesign
             name="search1"
             size={25}
             s
             color="black"
             style={styles.search}
-          />
+          /> */}
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Cart')}>
-          <SimpleLineIcons
+          {/* <SimpleLineIcons
             name="handbag"
             size={25}
             color="black"
             style={styles.search}
-          />
+          /> */}
         </TouchableWithoutFeedback>
       </View>
     </View>

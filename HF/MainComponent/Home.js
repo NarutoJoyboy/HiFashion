@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import {
   View,
   Text,
@@ -26,11 +26,13 @@ import HomeTabs from './HomeTabs';
 import { useNavigation } from '@react-navigation/native';
 import { getProducts, getBrands } from '../firebase/System';
 import { Title } from '../ImpComponent/Title';
+import Icon from '../ImpComponent/Icons';
+
+
 const {width, height} = Dimensions.get('screen');
 
 
-
-export default function Home() {
+export function Home() {
 
 
   const navigation = useNavigation();
@@ -209,6 +211,9 @@ export default function Home() {
     </ScrollView>
   );
 }
+
+
+export default HomeScreen = memo(Home);
 
 const styles = StyleSheet.create({
   // Text Styles
