@@ -7,7 +7,6 @@ import MyTheme from '../Colors/MyTheme';
 const {width, height} = Dimensions.get('screen');
 
 export default function ProductCard({item}) {
-  // const item = props.item;
   return (
     <View style={{marginTop: 10}}>
         <TouchableOpacity activeOpacity={0.6}>

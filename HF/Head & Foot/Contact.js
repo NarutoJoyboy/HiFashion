@@ -10,7 +10,7 @@ import { Title } from '../ImpComponent/Title'
 export default function Contact() {
   return (
     <View style={styles.container}>
-      <Header/>
+      <Header Styles={'white'}/>
       {/* <View style={styles.title}>
         <Text style={styles.text}>Contact Us</Text>
         <Divider/>

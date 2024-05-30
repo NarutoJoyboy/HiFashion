@@ -49,7 +49,7 @@ export default function Blog() {
     <FlatList
       ListHeaderComponent={
         <View style={styles.container}>
-          <Header />
+          <Header Styles={'white'} />
           <Title label={"BLOG"}/>
         </View>
       }

@@ -98,7 +98,7 @@ export default function ProductSection() {
       <FlatList
         ListHeaderComponent={
           <View>
-            <Header />
+            <Header Styles={'white'}/>
             <FilterComponent />
             <FilteredDataComponent />
           </View>

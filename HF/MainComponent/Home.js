@@ -73,7 +73,7 @@ export function Home() {
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View>
-        <Header />
+        <Header Styles={'#E7EAEF'}/>
         <View style={{backgroundColor:'#E7EAEF'}}>
           <HomeImg1 width={width} height={height/1.39}/>
             <TouchableOpacity style={styles.explorebut}>
