@@ -4,6 +4,7 @@ import HomeImg1 from '../../Icons/HomeImg1';
 import FontFamily from '../Colors/style';
 import MyTheme from '../Colors/MyTheme';
 
+
 const {width, height} = Dimensions.get('screen');
 
 export default function ProductCard({item}) {

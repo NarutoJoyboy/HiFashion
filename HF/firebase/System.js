@@ -11,6 +11,6 @@ export const getProducts = async () => {
 }
 
 
-export const getBrands = ()=>{
+export const getBrands = () => {
     console.log('getBrands..................................')
 }

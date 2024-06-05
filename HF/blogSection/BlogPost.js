@@ -1,12 +1,11 @@
-import {
-  View,
-  Text,
-  TouchableWithoutFeedback,
-  Image,
-  FlatList,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
+import {Text, 
+  View, 
+  Image, 
+  StyleSheet, 
+  Dimensions, 
+  FlatList, 
+  TouchableWithoutFeedback
+} from "react-native";
 import React, {useState} from 'react';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LinearGradient from 'react-native-linear-gradient';

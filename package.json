@@ -27,7 +27,7 @@
     "@tamagui/core": "^1.89.28",
     "metro": "^0.80.6",
     "react": "18.2.0",
-    "react-native": "^0.73.6",
+    "react-native": "0.73.4",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "^2.14.0",
     "react-native-image-picker": "^7.1.0",
@@ -41,6 +41,7 @@
     "react-native-svg": "^15.2.0",
     "react-native-tab-view": "^3.5.2",
     "react-native-uuid": "^2.0.1",
+    "react-native-vector-icons": "^10.1.0",
     "react-native-video": "^5.2.1",
     "zustand": "^4.5.2"
   },

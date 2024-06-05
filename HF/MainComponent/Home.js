@@ -1,4 +1,4 @@
-import React, { useEffect, memo } from 'react';
+import React, { useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
-  TouchableWithoutFeedback,
   FlatList,
 } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -32,7 +31,7 @@ import Icon from '../ImpComponent/Icons';
 const {width, height} = Dimensions.get('screen');
 
 
-export function Home() {
+export default function Home() {
 
 
   const navigation = useNavigation();
@@ -212,8 +211,6 @@ export function Home() {
   );
 }
 
-
-export default HomeScreen = memo(Home);
 
 const styles = StyleSheet.create({
   // Text Styles
