@@ -1,11 +1,12 @@
 import {create} from 'zustand';
 
+const useStore = create(set => ({
+  products: [],
+  setProducts: value => set({products: value}),
 
-export const useStore = create((set) => ({
-
-    products : [],
-    setproducts :(products) =>set({products}),
-
-    
-
+  appImages:[],
+  setAppImages: value => set({appImages: value}),
 }));
+
+
+export default useStore;

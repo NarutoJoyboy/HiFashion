@@ -1,16 +1,20 @@
 import firestore from "@react-native-firebase/firestore";
-import { useStore } from "../Zustand/UseStore";
+import useStore from "../Zustand/UseStore";
+
+
 
 const fr = firestore();
 
-const setProducts = useStore(state => state.setProducts);
 
-export const getProducts = async () => {
+
+
+export const getProducts = async () =>{
     const response = await fr.collection('products').get();
-    setProducts(response.docs);
-}
+    useStore.getState().setProducts(response.docs)
+};
 
 
-export const getBrands = () => {
-    console.log('getBrands..................................')
+export const getAppImages = async () =>{
+    const response = await fr.collection('Images').get();
+
 }

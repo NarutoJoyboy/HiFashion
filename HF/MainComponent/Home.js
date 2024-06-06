@@ -19,19 +19,26 @@ import HomeImg1 from '../../Icons/HomeImg1';
 import HomeImg2 from '../../Icons/HomeImg2';
 import TitleImg from '../../Icons/TitleImg';
 import HomeImg3 from '../../Icons/HomeImg3';
-import Video from 'react-native-video';
 import SvgIcons from '../../Icons/SvgIcons';
 import HomeTabs from './HomeTabs';
 import { useNavigation } from '@react-navigation/native';
-import { getProducts, getBrands } from '../firebase/System';
 import { Title } from '../ImpComponent/Title';
 import Icon from '../ImpComponent/Icons';
+import { getProducts } from '../firebase/System';
+
+
+
 
 
 const {width, height} = Dimensions.get('screen');
 
 
 export default function Home() {
+
+  useEffect(()=>{
+    getProducts();
+
+  },[])
 
 
   const navigation = useNavigation();

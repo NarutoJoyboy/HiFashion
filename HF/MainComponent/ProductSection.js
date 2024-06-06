@@ -6,7 +6,7 @@ import {
   StyleSheet,
   FlatList,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {startTransition, useEffect, useState} from 'react';
 import Header from '../Head & Foot/header';
 import Filter from '../../Icons/filter';
 import ListView from '../../Icons/ListView';
@@ -15,15 +15,15 @@ import MyTheme from '../Colors/MyTheme';
 import FontFamily from '../Colors/style';
 import Feather from 'react-native-vector-icons/Feather';
 import ProductCard from './ProductCard';
-import { getProducts } from '../firebase/System';
-import { useStore } from '../Zustand/UseStore';
+import useStore from '../Zustand/UseStore';
+
 
 
 const {width, height} = Dimensions.get('screen');
 
 export default function ProductSection() {
 
-  const [productData, setProductData] = useState([])
+  const {products} = useStore(state=>state)
 
 
 
@@ -104,12 +104,14 @@ export default function ProductSection() {
           </View>
         }
         
-        data={productData}
+        data={products}
         keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         renderItem={({item}) => {
           return (
-            <ProductCard item = {item._data}/>
+            <View style={{margin:10}}>
+              <ProductCard item = {item._data}/>
+            </View>
           );
         }}
       />
