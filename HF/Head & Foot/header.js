@@ -42,7 +42,7 @@ export default function Header({Styles}) {
             style={styles.search}
           />
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>console.log('Prem..................')}>
+        <TouchableOpacity onPress={()=>navigation.navigate('Cart')}>
           <SimpleLineIcons
             name="handbag"
             size={25}
