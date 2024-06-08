@@ -15,6 +15,7 @@ import MyTheme from '../Colors/MyTheme';
 import ExportIcon from '../../Icons/ExportIcon';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import AntDesign from 'react-native-vector-icons/AntDesign';
+import { ColorSelector, SizeSelector } from '../ImpComponent/ProdetailScreenComponent';
 
 const {width, height} = Dimensions.get('window');
 
@@ -89,21 +90,13 @@ export default function ProductDetailsScreen({route}) {
             </TouchableOpacity>
           </View>
 
-          <View>
-            <Text>Color</Text>
-            <View style={[styles.boxBorder, {backgroundColor: item}]}></View>
+          <View style={{flexDirection:'row', alignItems:'center'}}>
+            <Text style={{fontSize:15, fontFamily:FontFamily.txt.fontFamily, marginRight:10, color:MyTheme.colors.dividerColor}}>Color</Text>
+            <ColorSelector color={item.color||[]}/>
           </View>
           <View>
             <Text>Size</Text>
-            {/* {item.size.map((item, index) => {
-              return (
-                <View key={index}>
-                  <Text>{item}</Text>
-                </View>
-              );
-            })} */}
-            {/* <Text>{item.size[2]}</Text> */}
-            <View></View>
+            <SizeSelector size={item.size}/>
           </View>
         </View>
       </ScrollView>
@@ -153,10 +146,5 @@ const styles = StyleSheet.create({
   box1: {
     alignContent: 'center',
   },
-  boxBorder: {
-    borderWidth: 1,
-    width: 15,
-    height: 15,
-    borderRadius: 10,
-  },
+  
 });
