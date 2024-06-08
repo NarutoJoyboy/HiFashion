@@ -6,41 +6,45 @@ import {
   StyleSheet,
   Image,
   FlatList,
+  ScrollView,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import FontFamily from '../Colors/style';
 import Header from '../Head & Foot/header';
 import MyTheme from '../Colors/MyTheme';
 import ExportIcon from '../../Icons/ExportIcon';
-import Fontisto from "react-native-vector-icons/Fontisto"
-import AntDesign from "react-native-vector-icons/AntDesign"
-
+import Fontisto from 'react-native-vector-icons/Fontisto';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const {width, height} = Dimensions.get('window');
 
 export default function ProductDetailsScreen({route}) {
   const {item} = route.params;
 
+  const [color, setColor] = useState([]);
+  // setColor(item.color);
+
   const CartFooter = () => {
     return (
       <View style={styles.footer}>
         <View style={styles.box1}>
           <TouchableOpacity>
-            <Fontisto name='plus-a' size={25} color={"white"}/>
+            <Fontisto name="plus-a" size={25} color={'white'} />
           </TouchableOpacity>
           <Text style={styles.txtBasket}>ADD TO BASKET</Text>
         </View>
         <TouchableOpacity>
-          <AntDesign name='hearto' size={25} color={'white'}/>
+          <AntDesign name="hearto" size={25} color={'white'} />
         </TouchableOpacity>
       </View>
     );
-  }
+  };
   return (
-    <View style={{flex:1}}>
-      <Header Styles={'white'} />
-      <View style={styles.container}>
-        <FlatList
+    <View style={{flex: 1}}>
+      <ScrollView style={{flex: 1}}>
+        <Header Styles={'white'} />
+        <View style={styles.container}>
+          {/* <FlatList
           data={item.image}
           keyExtractor={(items, index) => index.toString()}
           horizontal={true}
@@ -52,23 +56,58 @@ export default function ProductDetailsScreen({route}) {
                 source={{uri: item}}
                 width={width / 1.05}
                 height={height / 1.7}
-              />
-            </View>
+                />
+                </View>
           )}
-        />
-        <View style={styles.detailsbox}>
-          <View>
-            <Text style={styles.txtTitle}>{item.name.toUpperCase()}</Text>
-            <Text style={styles.description}>{item.product_details}</Text>
-            <Text style={styles.price}>${item.price}</Text>
+        /> */}
+          <ScrollView
+            horizontal={true}
+            pagingEnabled={true}
+            showsHorizontalScrollIndicator={false}>
+            <View style={{flexDirection: 'row'}}>
+              {item.image.map((item, index) => {
+                return (
+                  <View style={{marginBottom: 20}} key={index}>
+                    <Image
+                      source={{uri: item}}
+                      style={{width: width / 1.05, height: height / 1.7}}
+                    />
+                  </View>
+                );
+              })}
+            </View>
+          </ScrollView>
+          <View style={styles.detailsbox}>
+            <View>
+              <Text style={styles.txtTitle}>{item.name.toUpperCase()}</Text>
+              <Text style={styles.description}>{item.product_details}</Text>
+              <Text style={styles.price}>${item.price}</Text>
+            </View>
+
+            <TouchableOpacity>
+              <ExportIcon width={24} height={24} />
+            </TouchableOpacity>
           </View>
 
-          <TouchableOpacity>
-            <ExportIcon width={24} height={24} />
-          </TouchableOpacity>
+          <View>
+            <Text>Color</Text>
+            <View style={[styles.boxBorder, {backgroundColor: item}]}></View>
+          </View>
+          <View>
+            <Text>Size</Text>
+            {/* {item.size.map((item, index) => {
+              return (
+                <View key={index}>
+                  <Text>{item}</Text>
+                </View>
+              );
+            })} */}
+            {/* <Text>{item.size[2]}</Text> */}
+            <View></View>
+          </View>
         </View>
-      </View>
-        <CartFooter/>
+      </ScrollView>
+      <CartFooter />
     </View>
   );
 }
@@ -100,19 +139,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  footer:{
+  footer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor:'black',
-    position:'absolute',
-    bottom:0,
-    left:0,
-    right:0,
-    height:60
-
+    backgroundColor: 'black',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 60,
   },
-  box1:{
-    alignContent:'center'
-  }
+  box1: {
+    alignContent: 'center',
+  },
+  boxBorder: {
+    borderWidth: 1,
+    width: 15,
+    height: 15,
+    borderRadius: 10,
+  },
 });
