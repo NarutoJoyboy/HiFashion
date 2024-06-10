@@ -7,4 +7,4 @@ const xml = `
 `
 
 
-export default Chat = (width, height) => <SvgXml xml={xml} width={width} height={height} />;
+export const Chat = (width, height) => <SvgXml xml={xml} width={width} height={height} />;

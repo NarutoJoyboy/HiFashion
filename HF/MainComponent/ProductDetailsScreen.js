@@ -15,15 +15,15 @@ import MyTheme from '../Colors/MyTheme';
 import ExportIcon from '../../Icons/ExportIcon';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { ColorSelector, SizeSelector } from '../ImpComponent/ProdetailScreenComponent';
+import {
+  ColorSelector,
+  SizeSelector,
+} from '../ImpComponent/ProdetailScreenComponent';
 
 const {width, height} = Dimensions.get('window');
 
 export default function ProductDetailsScreen({route}) {
   const {item} = route.params;
-
-  const [color, setColor] = useState([]);
-  // setColor(item.color);
 
   const CartFooter = () => {
     return (
@@ -34,7 +34,7 @@ export default function ProductDetailsScreen({route}) {
           </TouchableOpacity>
           <Text style={styles.txtBasket}>ADD TO BASKET</Text>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.box2}>
           <AntDesign name="hearto" size={25} color={'white'} />
         </TouchableOpacity>
       </View>
@@ -45,22 +45,6 @@ export default function ProductDetailsScreen({route}) {
       <ScrollView style={{flex: 1}}>
         <Header Styles={'white'} />
         <View style={styles.container}>
-          {/* <FlatList
-          data={item.image}
-          keyExtractor={(items, index) => index.toString()}
-          horizontal={true}
-          pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => (
-            <View style={{marginBottom: 20}}>
-              <Image
-                source={{uri: item}}
-                width={width / 1.05}
-                height={height / 1.7}
-                />
-                </View>
-          )}
-        /> */}
           <ScrollView
             horizontal={true}
             pagingEnabled={true}
@@ -90,13 +74,11 @@ export default function ProductDetailsScreen({route}) {
             </TouchableOpacity>
           </View>
 
-          <View style={{flexDirection:'row', alignItems:'center'}}>
-            <Text style={{fontSize:15, fontFamily:FontFamily.txt.fontFamily, marginRight:10, color:MyTheme.colors.dividerColor}}>Color</Text>
-            <ColorSelector color={item.color||[]}/>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <ColorSelector color={item.color || []} productId={item.id} />
           </View>
           <View>
-            <Text>Size</Text>
-            <SizeSelector size={item.size}/>
+            <SizeSelector size={item.size || []} productId={item.id} />
           </View>
         </View>
       </ScrollView>
@@ -144,7 +126,18 @@ const styles = StyleSheet.create({
     height: 60,
   },
   box1: {
-    alignContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginHorizontal:20
   },
+  box2:{
+    marginHorizontal:20
   
+  },
+  txtBasket: {
+    color: 'white',
+    fontSize: 20,
+    fontFamily: FontFamily.txt.fontFamily,
+    marginLeft: 20,
+  },
 });
