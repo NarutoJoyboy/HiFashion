@@ -25,6 +25,7 @@ const {width, height} = Dimensions.get('window');
 export default function ProductDetailsScreen({route}) {
   const {item} = route.params;
 
+  
   const CartFooter = () => {
     return (
       <View style={styles.footer}>
@@ -41,7 +42,7 @@ export default function ProductDetailsScreen({route}) {
     );
   };
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, paddingBottom: 60}}>
       <ScrollView style={{flex: 1}}>
         <Header Styles={'white'} />
         <View style={styles.container}>
@@ -74,11 +75,32 @@ export default function ProductDetailsScreen({route}) {
             </TouchableOpacity>
           </View>
 
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <ColorSelector color={item.color || []} productId={item.id} />
+          <ColorSelector color={item.color || []} productId={item.id} />
+          <SizeSelector size={item.size || []} productId={item.id} />
+          <View style={{marginVertical: 50}}>
+            <Text style={[styles.txtTitle, {fontSize: 19, letterSpacing: 2}]}>
+              MATERIALS
+            </Text>
+            <Text style={styles.description}>{item.materials}</Text>
           </View>
           <View>
-            <SizeSelector size={item.size || []} productId={item.id} />
+            <View></View>
+            <Text
+              style={[
+                styles.txtTitle,
+                {fontSize: 19, letterSpacing: 2, marginVertical: 10},
+              ]}>
+              CARE
+            </Text>
+            <Text style={styles.description}>{item.care}</Text>
+
+            <View>
+              {item.care_details.map((item, index) => (
+                <Text key={index} style={styles.description}>
+                  {item}
+                </Text>
+              ))}
+            </View>
           </View>
         </View>
       </ScrollView>
@@ -93,7 +115,7 @@ const styles = StyleSheet.create({
   },
   productDetails: {margin: 10},
   txtTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: FontFamily.txt.fontFamily,
     color: MyTheme.colors.txtColor,
     marginBottom: 5,
@@ -128,11 +150,10 @@ const styles = StyleSheet.create({
   box1: {
     alignItems: 'center',
     flexDirection: 'row',
-    marginHorizontal:20
+    marginHorizontal: 20,
   },
-  box2:{
-    marginHorizontal:20
-  
+  box2: {
+    marginHorizontal: 20,
   },
   txtBasket: {
     color: 'white',
