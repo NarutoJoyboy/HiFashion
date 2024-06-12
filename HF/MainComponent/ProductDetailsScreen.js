@@ -19,13 +19,15 @@ import {
   ColorSelector,
   SizeSelector,
 } from '../ImpComponent/ProdetailScreenComponent';
+import SvgIcons from '../../Icons/SvgIcons';
+
 
 const {width, height} = Dimensions.get('window');
 
 export default function ProductDetailsScreen({route}) {
   const {item} = route.params;
 
-  
+
   const CartFooter = () => {
     return (
       <View style={styles.footer}>
@@ -93,13 +95,13 @@ export default function ProductDetailsScreen({route}) {
               CARE
             </Text>
             <Text style={styles.description}>{item.care}</Text>
-
+              <SvgIcons name="Chat" width={30} height={30} />
             <View>
-              {item.care_details.map((item, index) => (
+              {/* {item.care_details.map((item, index) => (
                 <Text key={index} style={styles.description}>
                   {item}
                 </Text>
-              ))}
+              ))} */}
             </View>
           </View>
         </View>
