@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, {startTransition, useEffect, useState} from 'react';
 import Header from '../Head & Foot/header';
-import Filter from '../../Icons/filter';
+import SvgIIcons from '../../Icons/SvgIcons';
 import ListView from '../../Icons/ListView';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MyTheme from '../Colors/MyTheme';
@@ -52,6 +52,7 @@ export default function ProductSection() {
             activeOpacity={0.6}
             onPress={() => console.warn('Filter')}>
             <Filter width={25} height={25} />
+            <SvgIIcons name="Filter" width={25} height={25} />
           </TouchableOpacity>
         </View>
       </View>

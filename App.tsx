@@ -21,7 +21,7 @@ export default function App() {
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator screenOptions={{ contentStyle:{backgroundColor:MyTheme.colors.primary}, headerShown:false} }  >
         <Stack.Screen name='Home' component={Home}/>
-        <Stack.Screen name='Blog' component={Blog}/>
+        {/* <Stack.Screen name='Blog' component={Blog}/>
         <Stack.Screen name='BlogPostDetails' component={BlogPostDetails}/>
         <Stack.Screen name='Menu' component={Menu} options={{
           animation:'slide_from_left'
@@ -29,7 +29,7 @@ export default function App() {
         <Stack.Screen name='Cart' component={Cart} />
         <Stack.Screen name='ProductSection' component={ProductSection} />
         <Stack.Screen name='Contact' component={Contact}/>
-        <Stack.Screen name='ProductDetailsScreen' component={ProductDetailsScreen}/>
+        <Stack.Screen name='ProductDetailsScreen' component={ProductDetailsScreen}/> */}
       </Stack.Navigator>
     </NavigationContainer>
   )

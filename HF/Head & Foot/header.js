@@ -1,53 +1,31 @@
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity
-} from 'react-native';
-import React, { useEffect } from 'react';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
+import {View, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import TitleImg from '../../Icons/TitleImg';
-import { getBrands, getProducts } from '../firebase/System';
+import {getBrands, getProducts} from '../firebase/System';
+import SvgIcons from '../../Icons/SvgIcons';
 
 const {width, height} = Dimensions.get('screen');
 
 export default function Header({Styles}) {
   const navigation = useNavigation();
 
-  // useEffect(()=>{
-  //   console.log("UseEffect Called............................")
-  //  const apk = getBrands();
-  //  return apk;
-  // },[])
-
   return (
-    <View style={[styles.container, {backgroundColor:Styles}]}>
+    <View style={[styles.container, {backgroundColor: Styles}]}>
       <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
-        <SimpleLineIcons name="menu" size={25} color="black" />
+        <SvgIcons name="Menu" width={width / 15} height={height / 30} />
       </TouchableOpacity>
-      <View style={{marginLeft: width / 7}}>
-        <TitleImg width={width / 5} height={height / 26} />
+      <View style={{marginLeft: width / 15}}>
+        <SvgIcons name="Logo" width={width / 3} height={height / 30} />
       </View>
       <View style={styles.rightHead}>
-        <TouchableOpacity onPress={()=>getBrands()}>
-          <AntDesign
-            name="search1"
-            size={25}
-            s
-            color="black"
-            style={styles.search}
-          />
+        <TouchableOpacity onPress={() => getBrands()} style={{paddingRight:10}}>
+          <SvgIcons name="Search" width={width / 15} height={height / 30} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('Cart')}>
-          <SimpleLineIcons
-            name="handbag"
-            size={25}
-            color="black"
-            style={styles.search}
+        <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+          <SvgIcons
+            name="ShoopingBag"
+            width={width / 15}
+            height={height / 30}
           />
         </TouchableOpacity>
       </View>
@@ -64,6 +42,7 @@ const styles = StyleSheet.create({
   },
   rightHead: {
     flexDirection: 'row',
+
   },
   txt: {
     fontSize: 18,

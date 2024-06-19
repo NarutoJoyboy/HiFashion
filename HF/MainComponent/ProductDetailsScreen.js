@@ -12,7 +12,6 @@ import React, {useState} from 'react';
 import FontFamily from '../Colors/style';
 import Header from '../Head & Foot/header';
 import MyTheme from '../Colors/MyTheme';
-import ExportIcon from '../../Icons/ExportIcon';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {
@@ -73,7 +72,8 @@ export default function ProductDetailsScreen({route}) {
             </View>
 
             <TouchableOpacity>
-              <ExportIcon width={24} height={24} />
+              {/* <ExportIcon width={24} height={24} /> */}
+              <SvgIcons name="Export" width={24} height={24} />
             </TouchableOpacity>
           </View>
 
@@ -95,7 +95,7 @@ export default function ProductDetailsScreen({route}) {
               CARE
             </Text>
             <Text style={styles.description}>{item.care}</Text>
-              <SvgIcons name="Chat" width={30} height={30} />
+              {/* <SvgIcons name="Chat" width={30} height={30} /> */}
             <View>
               {/* {item.care_details.map((item, index) => (
                 <Text key={index} style={styles.description}>
