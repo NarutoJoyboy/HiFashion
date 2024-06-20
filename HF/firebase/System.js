@@ -14,7 +14,8 @@ export const getProducts = async () =>{
 };
 
 
-export const getAppImages = async () =>{
-    const response = await fr.collection('Images').get();
+export const getAppData = async () =>{
+    const response = await fr.collection('AppData').get();
+    useStore.getState().setAppData(response.docs)
 
 }

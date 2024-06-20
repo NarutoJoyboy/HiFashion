@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {
   View,
   Text,
@@ -12,7 +12,10 @@ import {
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Divider from '../Head & Foot/divider';
 import Header from '../Head & Foot/header';
-import {FooterComponent1, FooterComponent2} from "../Head & Foot/footerComponent1"
+import {
+  FooterComponent1,
+  FooterComponent2,
+} from '../Head & Foot/footerComponent1';
 import MyTheme from '../Colors/MyTheme';
 import FontFamily from '../Colors/style';
 import HomeImg1 from '../../Icons/HomeImg1';
@@ -20,22 +23,22 @@ import HomeImg2 from '../../Icons/HomeImg2';
 import HomeImg3 from '../../Icons/HomeImg3';
 import SvgIcons from '../../Icons/SvgIcons';
 import HomeTabs from './HomeTabs';
-import { useNavigation } from '@react-navigation/native';
-import { Title } from '../ImpComponent/Title';
-import { getProducts } from '../firebase/System';
-
-
-
+import {useNavigation} from '@react-navigation/native';
+import {Title} from '../ImpComponent/Title';
+import {getProducts, getAppData} from '../firebase/System';
+import useStore from '../Zustand/UseStore';
+import AppSlider from '../ImpComponent/AppSlider';
 
 const {width, height} = Dimensions.get('screen');
 
-
 export default function Home() {
-
-  useEffect(()=>{
+  useEffect(() => {
     getProducts();
+    getAppData();
+  }, []);
+  const appData = useStore(state => state.appData);
+  console.log(appData, '.............................................1');
 
-  },[])
 
 
   const navigation = useNavigation();
@@ -50,40 +53,39 @@ export default function Home() {
 
   const ShippingDetails = [
     {
-      img: <SvgIcons name="Mirs1" width={width/7} height={height/15}/>,
+      img: <SvgIcons name="Mirs1" width={width / 7} height={height / 15} />,
       name: 'Fast shipping Free on order above $25.',
       id: 1,
     },
     {
-      img: <SvgIcons name="Mirs2" width={width/7} height={height/15}/>,
+      img: <SvgIcons name="Mirs2" width={width / 7} height={height / 15} />,
       name: 'Sustainable process from start to finish.',
       id: 2,
     },
     {
-      img: <SvgIcons name="Mirs3" width={width/7} height={height/15}/>,
+      img: <SvgIcons name="Mirs3" width={width / 7} height={height / 15} />,
       name: 'Unique designs and high quality materials.',
       id: 3,
     },
     {
-      img: <SvgIcons name="Mirs4" width={width/7} height={height/15}/>,
+      img: <SvgIcons name="Mirs4" width={width / 7} height={height / 15} />,
       name: 'Giving priority to customers satisfaction.',
       id: 4,
     },
   ];
 
- 
-
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View>
-        <Header Styles={'#E7EAEF'}/>
-        <View style={{backgroundColor:'#E7EAEF'}}>
-          <HomeImg1 width={width} height={height/1.39}/>
-            <TouchableOpacity style={styles.explorebut}>
-              <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
-            </TouchableOpacity>
+        <Header Styles={'#E7EAEF'} />
+        <View style={{backgroundColor: '#E7EAEF'}}>
+          {/* <HomeImg1 width={width} height={height / 1.39} /> */}
+          {/* <AppSlider images={appData._Data.banner} /> */}
+          <TouchableOpacity style={styles.explorebut}>
+            <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
+          </TouchableOpacity>
         </View>
-        <Title label={'NEW ARRIVAL'}/>
+        <Title label={'NEW ARRIVAL'} />
         <View style={{flex: 1, height: height}}>
           <HomeTabs />
         </View>
@@ -93,7 +95,9 @@ export default function Home() {
             justifyContent: 'center',
             alignContent: 'center',
           }}>
-          <TouchableOpacity onPress={()=> navigation.navigate('ProductSection')} activeOpacity={0.6}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('ProductSection')}
+            activeOpacity={0.6}>
             <View
               style={{
                 marginBottom: 20,
@@ -114,7 +118,7 @@ export default function Home() {
             flexWrap: 'wrap',
             flexDirection: 'row',
             justifyContent: 'center',
-            marginBottom:60,
+            marginBottom: 60,
           }}>
           {Brnds.map(item => {
             return (
@@ -128,9 +132,9 @@ export default function Home() {
           <Divider />
         </View>
         <View style={{alignItems: 'center'}}>
-          <Title label={"COLLECTIONS"}/>
-          <HomeImg2 width={width} height={height/3}/>
-          <HomeImg3 width={width/1.4} height={height/2.5} />
+          <Title label={'COLLECTIONS'} />
+          <HomeImg2 width={width} height={height / 3} />
+          <HomeImg3 width={width / 1.4} height={height / 2.5} />
           {/* <Video source={require('../Icons/1.1.mp4')}
           controls={true}                      
           ref={(ref) => {
@@ -144,19 +148,18 @@ export default function Home() {
           /> */}
         </View>
         <View>
-          <Title label={"Just For You"}/>
-          <View style={{marginTop:20}}>
-
-          <FlatList
-            data={[1, 2, 3]}
-            keyExtractor={item => item.toString()}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            renderItem={({item}) => {
-              return (
-                <TouchableOpacity activeOpacity={0.5}>
-                  <View>
-                    {/* <Image
+          <Title label={'Just For You'} />
+          <View style={{marginTop: 20}}>
+            <FlatList
+              data={[1, 2, 3]}
+              keyExtractor={item => item.toString()}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({item}) => {
+                return (
+                  <TouchableOpacity activeOpacity={0.5}>
+                    <View>
+                      {/* <Image
                       source={require('../../Icons/Frame2.png')}
                       style={{
                         width: width / 1.7,
@@ -164,22 +167,21 @@ export default function Home() {
                         marginLeft: 10,
                       }}
                       /> */}
-                  </View>
-                  <Text style={styles.txt5}>
-                    Harris Tweed Three Button Jacket
-                  </Text>
-                  <Text style={styles.txt6}>$120</Text>
-                </TouchableOpacity>
-              );
-            }}
+                    </View>
+                    <Text style={styles.txt5}>
+                      Harris Tweed Three Button Jacket
+                    </Text>
+                    <Text style={styles.txt6}>$120</Text>
+                  </TouchableOpacity>
+                );
+              }}
             />
-            </View>
+          </View>
         </View>
 
         <View style={styles.classyStoreContainer}>
-          <View style={{marginVertical:15}}>
-          <SvgIcons name="Logo" width={width/5} height={height/20}/>
-
+          <View style={{marginVertical: 15}}>
+            <SvgIcons name="Logo" width={width / 5} height={height / 20} />
           </View>
           <Text style={styles.classyStoreText}>
             Making a luxurious lifestyle accessible for a generous group of
@@ -198,12 +200,19 @@ export default function Home() {
                     alignItems: 'center',
                   }}>
                   {item.img}
-                  <Text style={{textAlign: 'center', fontFamily:FontFamily.txt.fontFamily, color:MyTheme.colors.txtColor }}>{item.name}</Text>
+                  <Text
+                    style={{
+                      textAlign: 'center',
+                      fontFamily: FontFamily.txt.fontFamily,
+                      color: MyTheme.colors.txtColor,
+                    }}>
+                    {item.name}
+                  </Text>
                 </View>
               );
             })}
           </View>
-          <SvgIcons name="Design" width={width/3.9} height={height/8}/>
+          <SvgIcons name="Design" width={width / 3.9} height={height / 8} />
         </View>
 
         <FooterComponent1 />
@@ -213,7 +222,6 @@ export default function Home() {
     </ScrollView>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
@@ -243,8 +251,8 @@ const styles = StyleSheet.create({
     fontFamily: FontFamily.txt.fontFamily,
     textAlign: 'center',
     width: width / 1.3,
-    marginBottom:10,
-    color:MyTheme.colors.txtColor,
+    marginBottom: 10,
+    color: MyTheme.colors.txtColor,
   },
 
   // Image Styles

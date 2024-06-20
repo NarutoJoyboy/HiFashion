@@ -4,8 +4,8 @@ const useStore = create(set => ({
   products: [],
   setProducts: value => set({products: value}),
 
-  appImages: [],
-  setAppImages: value => set({appImages: value}),
+  appData: [],
+  setAppData: value => set({appData: value}),
 
   selectColor: {},
   setSelectColor: (productId, item) =>
