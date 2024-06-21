@@ -37,9 +37,8 @@ export default function Home() {
     getAppData();
   }, []);
   const appData = useStore(state => state.appData);
-  console.log(appData, '.............................................1');
-
-
+  appData.forEach(element => {
+    });
 
   const navigation = useNavigation();
   const Brnds = [
@@ -78,9 +77,9 @@ export default function Home() {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View>
         <Header Styles={'#E7EAEF'} />
-        <View style={{backgroundColor: '#E7EAEF'}}>
+        <View style={{backgroundColor: '#E7EAEF', width:width, height:height/1.39}}>
           {/* <HomeImg1 width={width} height={height / 1.39} /> */}
-          {/* <AppSlider images={appData._Data.banner} /> */}
+          {/* <AppSlider images={appData} /> */}
           <TouchableOpacity style={styles.explorebut}>
             <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
           </TouchableOpacity>
