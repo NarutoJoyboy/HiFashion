@@ -18,7 +18,6 @@ import {
 } from '../Head & Foot/footerComponent1';
 import MyTheme from '../Colors/MyTheme';
 import FontFamily from '../Colors/style';
-import HomeImg1 from '../../Icons/HomeImg1';
 import HomeImg2 from '../../Icons/HomeImg2';
 import HomeImg3 from '../../Icons/HomeImg3';
 import SvgIcons from '../../Icons/SvgIcons';

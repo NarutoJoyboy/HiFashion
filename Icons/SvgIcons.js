@@ -12,6 +12,8 @@ import Mirs3 from "./MiroodlesSticker3.svg";
 import Mirs4 from "./MiroodlesSticker4.svg";
 import Filter from "./Filter.svg";
 import Design from "./Design.svg";
+import ForwardArrow from "./ForwardArrow.svg";
+import ShoppingBagWhite from "./shoppingBagWhite.svg";
 
 
 const SvgIcons = ({name, width, height}) => {
@@ -40,6 +42,10 @@ const SvgIcons = ({name, width, height}) => {
         return <Filter width={width} height={height} />;
         case "Design":
         return <Design width={width} height={height} />;
+        case "ForwardArrow":
+        return <ForwardArrow width={width} height={height} />;
+        case "ShoppingBagWhite":
+        return <ShoppingBagWhite width={width} height={height} />;
         default:
         return null;
     }

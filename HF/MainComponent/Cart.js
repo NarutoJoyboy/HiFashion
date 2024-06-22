@@ -9,9 +9,9 @@ import {
 import React, {useState} from 'react';
 import Divider from '../Head & Foot/divider';
 import FontFamily from '../Colors/style';
-import Antdesign from 'react-native-vector-icons/AntDesign';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import {useNavigation} from '@react-navigation/native';
+import SvgIcons from '../../Icons/SvgIcons';
 
 const {width, height} = Dimensions.get('window');
 
@@ -26,7 +26,7 @@ export default function Cart() {
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             activeOpacity={0.6}>
-            <Antdesign name="arrowleft" size={25} color={'black'} />
+            <SvgIcons name={'ForwardArrow'} width={25} height={25} />
           </TouchableOpacity>
         </View>
         <View style={{marginHorizontal: width / 4, marginVertical: 10}}>
@@ -54,7 +54,7 @@ export default function Cart() {
         style={styles.checkOutButton}
         activeOpacity={0.5}
         onPress={() => console.warn("let's Checkout")}>
-        <SimpleLineIcons name="handbag" size={22} color="white" />
+        <SvgIcons name="ShoppingBagWhite" width={22} height={22} />
         {cartData.length === 0 ? (
           <Text style={styles.carttxt}>CONTINUE SHOPPING</Text>
         ) : (

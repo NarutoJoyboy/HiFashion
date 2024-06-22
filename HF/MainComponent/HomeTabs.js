@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import FontFamily from '../Colors/style';
-import HomeImg1 from '../../Icons/HomeImg1';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -22,8 +21,6 @@ export default function HomeTabs() {
     {name: 'Tshirt', id: 4},
     {name: 'Bag', id: 5},
   ];
-
-  const Image = <HomeImg1 width={width} height={height/1.2} />
 
   const TabData = [
     {image: "Prem", id: 1},
@@ -48,7 +45,7 @@ export default function HomeTabs() {
             <View  key={item.id}>
 
             { item.id === tabNo && <View>
-                {/* <HomeImg1 width={width} height={height/1.2} /> */}
+                
                 {/* {item.image} */}
                 <Text style={{color:'black', fontSize:30}}>{item.image}</Text>
                 <Text style={{color:'black', position:'absolute', top:20}}>{tabNo} my nmae is Prem</Text>
