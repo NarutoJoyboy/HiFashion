@@ -32,13 +32,19 @@ import AppSlider from '../ImpComponent/AppSlider';
 const {width, height} = Dimensions.get('screen');
 
 export default function Home() {
+
   useEffect(() => {
     getProducts();
     getAppData();
   }, []);
   const appData = useStore(state => state.appData);
-  appData.forEach(element => {
-    });
+  const products = useStore(state => state.products);
+
+  // console.log('.......................1', products)
+
+  // console.log('......................................', appData)
+
+
 
   const navigation = useNavigation();
   const Brnds = [
@@ -77,9 +83,9 @@ export default function Home() {
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View>
         <Header Styles={'#E7EAEF'} />
-        <View style={{backgroundColor: '#E7EAEF', width:width, height:height/1.39}}>
+        <View style={{backgroundColor: '#E7EAEF',  height: height / 1.39, width:width,}}>
           {/* <HomeImg1 width={width} height={height / 1.39} /> */}
-          {/* <AppSlider images={appData} /> */}
+          <AppSlider images={appData} />
           <TouchableOpacity style={styles.explorebut}>
             <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
           </TouchableOpacity>
@@ -284,7 +290,7 @@ const styles = StyleSheet.create({
     padding: 10,
     opacity: 0.6,
     position: 'absolute',
-    top: height / 1.6,
+    top: height / 1.8,
     alignSelf: 'center',
   },
   explorebutstyle: {
