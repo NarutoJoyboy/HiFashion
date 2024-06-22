@@ -27,7 +27,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Title} from '../ImpComponent/Title';
 import {getProducts, getAppData} from '../firebase/System';
 import useStore from '../Zustand/UseStore';
-import AppSlider from '../ImpComponent/AppSlider';
+import BannerSlider from '../ImpComponent/BannerSlider';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -38,13 +38,6 @@ export default function Home() {
     getAppData();
   }, []);
   const appData = useStore(state => state.appData);
-  const products = useStore(state => state.products);
-
-  // console.log('.......................1', products)
-
-  // console.log('......................................', appData)
-
-
 
   const navigation = useNavigation();
   const Brnds = [
@@ -85,7 +78,7 @@ export default function Home() {
         <Header Styles={'#E7EAEF'} />
         <View style={{backgroundColor: '#E7EAEF',  height: height / 1.39, width:width,}}>
           {/* <HomeImg1 width={width} height={height / 1.39} /> */}
-          <AppSlider images={appData} />
+          <BannerSlider images={appData} />
           <TouchableOpacity style={styles.explorebut}>
             <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
           </TouchableOpacity>

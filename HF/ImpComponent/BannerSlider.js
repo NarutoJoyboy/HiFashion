@@ -8,9 +8,10 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
+
 const {width, height} = Dimensions.get('screen');
 
-export default function AppSlider({images}) {
+export default function BannerSlider({images}) {
   const [slideNo, setSlideNo] = useState(0);
 
   console.log('hey', images);
@@ -21,6 +22,12 @@ export default function AppSlider({images}) {
 
   const test1 = Array.isArray(images) && images.length > 0 ? images[0] : null;
 
+  const onMomentumScrollEnd = (event) => {
+    const newSlideNo = Math.round(event.nativeEvent.contentOffset.x / width);
+    setSlideNo(newSlideNo);
+    console.log('slide............................', newSlideNo);
+  };
+
   if (!test1 || !Array.isArray(test1.banner)) {
     return (
       <View>
@@ -28,16 +35,17 @@ export default function AppSlider({images}) {
       </View>
     );
   }
-
   return (
     <View>
       <View style={{flexDirection: 'row', height: height / 1.39, width: width}}>
         <ScrollView
           horizontal={true}
           pagingEnabled={true}
-          showsHorizontalScrollIndicator={false}>
+          showsHorizontalScrollIndicator={false}
+          onMomentumScrollEnd={onMomentumScrollEnd}
+          >
           {test1.banner.map((item, index) => {
-            setSlideNo(index);
+            // setSlideNo(index);
             return (
               <Image
                 key={index}
@@ -52,6 +60,7 @@ export default function AppSlider({images}) {
           })}
         </ScrollView>
       </View>
+
       <View
         style={{
           flexDirection: 'row',
@@ -61,7 +70,9 @@ export default function AppSlider({images}) {
           padding: 10,
           borderRadius: 30,
           alignSelf: 'center',
+          opacity: 0.6,
         }}>
+          
         {test1.banner.map((_, index) => {
           return (
             <View
