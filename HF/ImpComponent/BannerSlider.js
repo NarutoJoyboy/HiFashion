@@ -20,14 +20,14 @@ export default function BannerSlider({images}) {
     <ActivityIndicator />;
   };
 
-  const test1 = Array.isArray(images) && images.length > 0 ? images[0] : null;
-
+  
   const onMomentumScrollEnd = (event) => {
     const newSlideNo = Math.round(event.nativeEvent.contentOffset.x / width);
     setSlideNo(newSlideNo);
     console.log('slide............................', newSlideNo);
   };
-
+  
+  const test1 = Array.isArray(images) && images.length > 0 ? images[0] : null;
   if (!test1 || !Array.isArray(test1.banner)) {
     return (
       <View>

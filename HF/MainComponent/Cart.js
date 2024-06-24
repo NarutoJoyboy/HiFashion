@@ -26,7 +26,7 @@ export default function Cart() {
           <TouchableOpacity
             onPress={() => navigation.goBack()}
             activeOpacity={0.6}>
-            <SvgIcons name={'ForwardArrow'} width={25} height={25} />
+            <SvgIcons name={'ForwardArrow'} width={30} height={30} />
           </TouchableOpacity>
         </View>
         <View style={{marginHorizontal: width / 4, marginVertical: 10}}>
