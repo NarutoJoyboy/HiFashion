@@ -7,17 +7,16 @@ import { useNavigation } from '@react-navigation/native';
 const {width, height} = Dimensions.get('screen');
 
 export default function ProductCard({item}) {
-  console.log('item...........................', item);
+  // console.log('item...........................', item);
   const navigation = useNavigation();
   return (
     <View style={{}}>
         <TouchableOpacity activeOpacity={0.6} onPress={()=> navigation.navigate('ProductDetailsScreen', {item:item})}>
 
-      {/* <HomeImg1 width={width / 2} height={height / 3} /> */}
-      {/* <Image source={{uri:item.image[0]}} width={width/2.25} height={height/3}/>
+      <Image source={{uri:item.image[0]}} width={width/2.25} height={height/3}/>
       <Text style={styles.txt}>{item.name.toUpperCase()}</Text>
       <Text style={styles.txt1} numberOfLines={1}>{item.product_details}</Text>
-      <Text style={styles.txt2}>${item.price}</Text> */}
+      <Text style={styles.txt2}>${item.price}</Text>
         </TouchableOpacity>
     </View>
   );

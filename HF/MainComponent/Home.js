@@ -38,9 +38,6 @@ export default function Home() {
   }, []);
   const appData = useStore(state => state.appData);
   const products = useStore(state => state.products);
-  // console.log('products..................', products.forEach(element => {
-  //   console.log('element............', element.careDetails);
-  // }));
 
   const navigation = useNavigation();
   const Brnds = [
@@ -87,7 +84,7 @@ export default function Home() {
           </TouchableOpacity>
         </View>
         <Title label={'NEW ARRIVAL'} />
-        <View style={{flex: 1, height: height}}>
+        <View style={{flex: 1}}>
           <HomeTabs  data = {products}/>
         </View>
         <View
@@ -96,22 +93,7 @@ export default function Home() {
             justifyContent: 'center',
             alignContent: 'center',
           }}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('ProductSection')}
-            activeOpacity={0.6}>
-            <View
-              style={{
-                marginBottom: 20,
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'center',
-                alignContent: 'center',
-              }}>
-              <Text style={styles.txt3}>EXPLORE MORE</Text>
-              <AntDesign name="arrowright" size={20} color={'black'} />
-              {/* <SvgIcons name="ForwardArrow" width={width / 20} height={height / 30} /> */}
-            </View>
-          </TouchableOpacity>
+          
           <Divider />
         </View>
 
