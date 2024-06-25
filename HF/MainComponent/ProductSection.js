@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   FlatList,
+  Modal,
 } from 'react-native';
 import React, {startTransition, useEffect, useState} from 'react';
 import Header from '../Head & Foot/header';
@@ -16,42 +17,39 @@ import FontFamily from '../Colors/style';
 import Feather from 'react-native-vector-icons/Feather';
 import ProductCard from './ProductCard';
 import useStore from '../Zustand/UseStore';
-
-
+import filterData from '../ImpComponent/filterData';
+import FilterData from '../ImpComponent/filterData';
 
 const {width, height} = Dimensions.get('screen');
 
-export default function ProductSection() {
+export default function ProductSection({tabNo}) {
+  const {products} = useStore(state => state);
+  const [modalVisible, setModalVisible] = useState(false);
 
-  const {products} = useStore(state=>state)
-
-
-
-  const FilterComponent = () => {
+  const HeaderComponent = () => {
     return (
       <View style={styles.container}>
-        <Text style={styles.txt}>4500 APPAREL</Text>
+        <Text style={styles.txt}>4500 Products</Text>
 
         <View style={styles.last3}>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.button1}
             onPress={() => console.warn('delete the filter')}>
             <Text style={[styles.txt, {marginRight: 10}]}>New</Text>
             <AntDesign name={'caretdown'} color={'grey'} size={13} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={styles.button2}
             activeOpacity={0.6}
             onPress={() => console.warn('delete the filter')}>
             <ListView width={25} height={25} />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
           <TouchableOpacity
             style={styles.button2}
             activeOpacity={0.6}
-            onPress={() => console.warn('Filter')}>
-            <Filter width={25} height={25} />
+            onPress={()=>setModalVisible(true)}>
             <SvgIIcons name="Filter" width={25} height={25} />
           </TouchableOpacity>
         </View>
@@ -99,19 +97,19 @@ export default function ProductSection() {
       <FlatList
         ListHeaderComponent={
           <View>
-            <Header Styles={'white'}/>
-            <FilterComponent />
+            <Header Styles={'white'} />
+            <HeaderComponent />
             <FilteredDataComponent />
+{modalVisible && <FilterData/>}
           </View>
         }
-        
         data={products}
         keyExtractor={(item, index) => index.toString()}
         numColumns={2}
         renderItem={({item}) => {
           return (
-            <View style={{margin:10}}>
-              <ProductCard item = {item._data}/>
+            <View style={{margin: 10}}>
+              <ProductCard item={item} />
             </View>
           );
         }}
@@ -142,6 +140,7 @@ const styles = StyleSheet.create({
   },
   last3: {
     flexDirection: 'row',
+    marginRight: 10,
   },
   button2: {
     borderRadius: 25,

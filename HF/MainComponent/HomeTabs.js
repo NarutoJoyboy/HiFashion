@@ -69,14 +69,14 @@ export default function HomeTabs({data}) {
         {tabNo === 'All'
           ? data.slice(0, 4).map((item, index) => {
               return (
-                <View style={{margin: 10}}>
+                <View style={{margin: 10}} key={index}>
                   <ProductCard item={item} />
                 </View>
               );
             })
           : filtered.slice(0, 4).map((item, index) => {
               return (
-                <View style={{margin: 10}}>
+                <View style={{margin: 10}} key={index}>
                   <ProductCard item={item} />
                 </View>
               );

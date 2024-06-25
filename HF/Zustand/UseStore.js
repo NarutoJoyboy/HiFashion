@@ -7,6 +7,9 @@ const useStore = create(set => ({
   appData: [],
   setAppData: value => set({appData: value}),
 
+  category:[],
+  setCategory: value => set({category: value}),
+
   selectColor: {},
   setSelectColor: (productId, item) =>
     set(state => ({selectColor: {...state.selectColor, [productId]: item}})),
