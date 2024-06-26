@@ -23,10 +23,10 @@ export const getAppData = async () => {
   }
 };
 
-export const Category = () => {
+export const getCategory = async () => {
   try {
-    const response = fr.collection('Category').get();
-    const category = response.docs.map(doc => doc.data());
+    const response = await fr.collection('Category').get();
+    const category = response.docs.map((doc)=>doc.data());
     useStore.getState().setCategory(category);
   } catch (error) {
     console.error('Failed to fetch category:', error);

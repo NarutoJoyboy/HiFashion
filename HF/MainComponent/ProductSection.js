@@ -17,14 +17,14 @@ import FontFamily from '../Colors/style';
 import Feather from 'react-native-vector-icons/Feather';
 import ProductCard from './ProductCard';
 import useStore from '../Zustand/UseStore';
-import filterData from '../ImpComponent/filterData';
 import FilterData from '../ImpComponent/filterData';
 
 const {width, height} = Dimensions.get('screen');
 
 export default function ProductSection({tabNo}) {
   const {products} = useStore(state => state);
-  const [modalVisible, setModalVisible] = useState(false);
+  const modalVisible = useStore(state => state.modalVisible);
+  const setModalVisible = useStore(state => state.setModalVisible);
 
   const HeaderComponent = () => {
     return (
@@ -92,6 +92,8 @@ export default function ProductSection({tabNo}) {
     );
   };
 
+  const visibility = modalVisible
+
   return (
     <View>
       <FlatList
@@ -100,7 +102,7 @@ export default function ProductSection({tabNo}) {
             <Header Styles={'white'} />
             <HeaderComponent />
             <FilteredDataComponent />
-{modalVisible && <FilterData/>}
+{modalVisible && <FilterData />}
           </View>
         }
         data={products}

@@ -24,7 +24,7 @@ import SvgIcons from '../../Icons/SvgIcons';
 import HomeTabs from './HomeTabs';
 import {useNavigation} from '@react-navigation/native';
 import {Title} from '../ImpComponent/Title';
-import {getProducts, getAppData} from '../firebase/System';
+import {getProducts, getAppData, getCategory} from '../firebase/System';
 import useStore from '../Zustand/UseStore';
 import BannerSlider from '../ImpComponent/BannerSlider';
 
@@ -35,9 +35,13 @@ export default function Home() {
   useEffect(() => {
     getProducts();
     getAppData();
+    getCategory();
   }, []);
   const appData = useStore(state => state.appData);
   const products = useStore(state => state.products);
+  // const category = useStore(state => state.category);
+
+  // console.log("......................", category);
 
   const navigation = useNavigation();
   const Brnds = [

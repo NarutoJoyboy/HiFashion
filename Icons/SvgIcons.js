@@ -14,6 +14,7 @@ import Filter from "./Filter.svg";
 import Design from "./Design.svg";
 import ForwardArrow from "./ForwardArrow.svg";
 import ShoppingBagWhite from "./shoppingBagWhite.svg";
+import Close from "./Close.svg";
 
 
 const SvgIcons = ({name, width, height}) => {
@@ -46,6 +47,8 @@ const SvgIcons = ({name, width, height}) => {
         return <ForwardArrow width={width} height={height} />;
         case "ShoppingBagWhite":
         return <ShoppingBagWhite width={width} height={height} />;
+        case "Close":
+        return <Close width={width} height={height} />;
         default:
         return null;
     }

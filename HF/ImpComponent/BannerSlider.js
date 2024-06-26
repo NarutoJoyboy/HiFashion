@@ -14,8 +14,6 @@ const {width, height} = Dimensions.get('screen');
 export default function BannerSlider({images}) {
   const [slideNo, setSlideNo] = useState(0);
 
-  console.log('hey', images);
-
   const Loading = () => {
     <ActivityIndicator />;
   };
