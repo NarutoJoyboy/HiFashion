@@ -20,43 +20,82 @@ export default function FilterData() {
   const selectedCategory = useStore(state => state.selectedCategory);
   const setSelectedCategory = useStore(state => state.setSelectedCategory);
   const setModalVisible = useStore(state => state.setModalVisible);
+  const [selecteCatValue, setSelecteCatValue] = useState([false]);
 
-  const SelectCat = (index) => {
-    
+
+  const SelectCat = (name) => {
+
+
   };
 
   const PriceFilter = [
-    { minlimit: "0", maxlimit: "1000" },
-    { minlimit: "1000", maxlimit: "2000" },
-    { minlimit: "2000", maxlimit: "3000" },
-    { minlimit: "3000", maxlimit: "4000" },
-    { minlimit: "4000", maxlimit: "5000+" },
-    
-  ]
+    {minlimit: '0', maxlimit: '1000'},
+    {minlimit: '1000', maxlimit: '2000'},
+    {minlimit: '2000', maxlimit: '3000'},
+    {minlimit: '3000', maxlimit: '4000'},
+    {minlimit: '4000', maxlimit: '5000+'},
+  ];
 
   const SelectPriceFilter = index => {
-    return(
-      <View style={{flexDirection:'row', flexWrap:'wrap'}}>
+    return (
+      <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
         {PriceFilter.map((item, index) => {
-          return(
+          return (
             <TouchableOpacity key={index} style={styles.catButton}>
-              <Text style={styles.catText1}>{item.minlimit} - {item.maxlimit}</Text>
+              <Text style={styles.catText1}>
+                {item.minlimit} - {item.maxlimit}
+              </Text>
             </TouchableOpacity>
-          )
+          );
         })}
       </View>
-    )
-  }
+    );
+  };
 
   const Footer = () => {
-    return(
+    return (
       <TouchableOpacity activeOpacity={0.7}>
-      <View style={{borderWidth:1, margin:10, borderRadius:20, backgroundColor:'black', padding:10}}>
-        <Text style={{textAlign:'center', fontFamily:FontFamily.txt.fontFamily, fontSize:20, color:MyTheme.colors.txtActiveColor,}}>Apply Filters</Text>
-      </View>
+        <View style={styles.applyButton}>
+          <Text style={styles.applyTxt}>Apply Filters</Text>
+        </View>
       </TouchableOpacity>
-    )
-  }
+    );
+  };
+
+  
+
+  const CategoryFilter = () => {
+    return (
+      <View style={styles.filterCat}>
+        {[{name: 'All', index: 0}, ...category].map((item, index) => {
+          return (
+            <TouchableOpacity
+              key={index}
+              onPress={() => SelectCat(item.name)}
+              style={[
+                styles.catButton,
+                {
+                  backgroundColor: selectedCategory[index] === index? 'black' : null,
+                },
+              ]}>
+              <Text
+                style={[
+                  styles.catText1,
+                  {
+                    color:
+                      selectedCategory === index
+                        ? MyTheme.colors.txtActiveColor
+                        : MyTheme.colors.txtColor,
+                  },
+                ]}>
+                {item.name}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+    );
+  };
 
   return (
     <Modal>
@@ -69,38 +108,9 @@ export default function FilterData() {
         </View>
         <View>
           <Text style={styles.catText}>Category</Text>
-          <View style={styles.filterCat}>
-            {[{name: 'All', index: 0}, ...category].map((item, index) => {
-              console.log('item', item, '............................', index);
-              return (
-                <TouchableOpacity
-                  key={index}
-                  onPress={() => setSelectedCategory(item.index)}
-                  style={[
-                    styles.catButton,
-                    {
-                      backgroundColor:
-                        selectedCategory === index ? 'black' : null,
-                    },
-                  ]}>
-                  <Text
-                    style={[
-                      styles.catText1,
-                      {
-                        color:
-                          selectedCategory ===  index
-                            ? MyTheme.colors.txtActiveColor
-                            : MyTheme.colors.txtColor,
-                      },
-                    ]}>
-                    {item.name}
-                  </Text>
-                </TouchableOpacity>
-              );
-            })}
-          </View>
+          <CategoryFilter />
         </View>
-        <View style={{marginVertical:30}}>
+        <View style={{marginVertical: 30}}>
           <Text style={styles.catText}>Price</Text>
           <SelectPriceFilter />
         </View>
@@ -151,5 +161,18 @@ const styles = StyleSheet.create({
   filterCat: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+  },
+  applyButton: {
+    borderWidth: 1,
+    margin: 10,
+    borderRadius: 30,
+    backgroundColor: 'black',
+    padding: 10,
+  },
+  applyTxt: {
+    textAlign: 'center',
+    fontFamily: FontFamily.txt.fontFamily,
+    fontSize: 20,
+    color: MyTheme.colors.txtActiveColor,
   },
 });

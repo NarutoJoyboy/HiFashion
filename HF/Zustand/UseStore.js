@@ -7,14 +7,23 @@ const useStore = create(set => ({
   appData: [],
   setAppData: value => set({appData: value}),
 
-  category:[],
+  category: [],
   setCategory: value => set({category: value}),
 
   modalVisible: false,
   setModalVisible: value => set({modalVisible: value}),
 
-  selectedCategory :[0],
-  setSelectedCategory: value => set({selectedCategory: value}),
+  selectedCategory: ['All'],
+  setSelectedCategory: (value, index) =>
+    set(state => {
+      const selectedCategory = state.selectedCategory;
+      selectedCategory[index] = value;
+      return {selectedCategory};
+    }),
+
+  selectPrice: {},
+  setSelectPrice: (productId, item) =>
+    set(state => ([selectPrice= {...state.selectPrice, [productId]: item}])),
 
   selectColor: {},
   setSelectColor: (productId, item) =>

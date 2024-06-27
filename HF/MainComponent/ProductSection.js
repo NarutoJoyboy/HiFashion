@@ -29,7 +29,7 @@ export default function ProductSection({tabNo}) {
   const HeaderComponent = () => {
     return (
       <View style={styles.container}>
-        <Text style={styles.txt}>4500 Products</Text>
+        <Text style={styles.txt}>{products.length} Products</Text>
 
         <View style={styles.last3}>
           {/* <TouchableOpacity
@@ -57,13 +57,17 @@ export default function ProductSection({tabNo}) {
     );
   };
 
+  const category = useStore(state => state.category);
+  const selectedCategory = useStore(state => state.selectedCategory);
   const FilteredData = [{data: 'Women'}, {data: 'All Apparel'}];
+  console.log('selectedCategory..................', selectedCategory);
   const FilteredDataComponent = () => {
     return (
       <FlatList
-        data={FilteredData}
+        data={selectedCategory}
         keyExtractor={(item, index) => index.toString()}
         horizontal={true}
+        showsHorizontalScrollIndicator={false}
         renderItem={({item}) => (
           <View
             style={{
@@ -75,7 +79,7 @@ export default function ProductSection({tabNo}) {
               alignItems: 'center',
               borderColor: '#DEDEDE',
             }}>
-            <Text style={styles.txt}>{item.data}</Text>
+            <Text style={styles.txt}>{item}</Text>
             <TouchableOpacity
               activeOpacity={0.6}
               onPress={() => console.warn('delete the filter')}>
@@ -89,6 +93,32 @@ export default function ProductSection({tabNo}) {
           </View>
         )}
       />
+      // selectedCategory.map((item, index) => {
+      //   return(
+      //   <View
+      //     style={{
+      //       borderWidth: 1,
+      //       padding: 7,
+      //       borderRadius: 20,
+      //       marginLeft: 10,
+      //       flexDirection: 'row',
+      //       alignItems: 'center',
+      //       borderColor: '#DEDEDE',
+      //     }}>
+      //     <Text style={styles.txt}>{item.name}</Text>
+      //     <TouchableOpacity
+      //       activeOpacity={0.6}
+      //       onPress={() => console.warn('delete the filter')}>
+      //       <Feather
+      //         name={'x'}
+      //         color={'#555555'}
+      //         size={18}
+      //         style={{paddingHorizontal: 5}}
+      //       />
+      //     </TouchableOpacity>
+      //   </View>
+      //   )
+      // })
     );
   };
 
