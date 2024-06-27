@@ -9,6 +9,7 @@ export default function Menu() {
     const [isVisble, setIsVisible] = useState(false);
     const {navigate} = useNavigation();
   return (
+    <Modal>
       <View style={{marginTop:20, backgroundColor:'white', flex:1}}>
         <TouchableWithoutFeedback 
         onPress={() => navigate('Home')}
@@ -17,6 +18,7 @@ export default function Menu() {
         </TouchableWithoutFeedback>
         <TabBar />
       </View>
+      </Modal>
     
   );
 }

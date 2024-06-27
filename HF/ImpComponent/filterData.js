@@ -20,13 +20,8 @@ export default function FilterData() {
   const selectedCategory = useStore(state => state.selectedCategory);
   const setSelectedCategory = useStore(state => state.setSelectedCategory);
   const setModalVisible = useStore(state => state.setModalVisible);
-  const [selecteCatValue, setSelecteCatValue] = useState([false]);
-
-
-  const SelectCat = (name) => {
-
-
-  };
+  const [selecteCatValue, setSelecteCatValue] = useState(false);
+  const SelectCat = index => {};
 
   const PriceFilter = [
     {minlimit: '0', maxlimit: '1000'},
@@ -71,7 +66,7 @@ export default function FilterData() {
           return (
             <TouchableOpacity
               key={index}
-              onPress={() => SelectCat(item.name)}
+              onPress={() => setSelectedCategory(item.index, item.name)}
               style={[
                 styles.catButton,
                 {

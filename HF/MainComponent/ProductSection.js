@@ -64,7 +64,7 @@ export default function ProductSection({tabNo}) {
   const FilteredDataComponent = () => {
     return (
       <FlatList
-        data={selectedCategory}
+        data={selectedCategory[0]}
         keyExtractor={(item, index) => index.toString()}
         horizontal={true}
         showsHorizontalScrollIndicator={false}

@@ -13,13 +13,17 @@ const useStore = create(set => ({
   modalVisible: false,
   setModalVisible: value => set({modalVisible: value}),
 
-  selectedCategory: ['All'],
-  setSelectedCategory: (value, index) =>
-    set(state => {
-      const selectedCategory = state.selectedCategory;
-      selectedCategory[index] = value;
-      return {selectedCategory};
-    }),
+  // selectedCategory: ['All', false],
+  // setSelectedCategory: (value, index) =>
+  //   set(
+  //     state => ({
+  //       selectedCategory: state.selectedCategory.map((item, i) =>
+  //         i === index ? value : item,
+  //       ),
+  //     }),
+  //   ),
+  selectedCategory: ["All"],
+  setSelectedCategory: (value, item) => set( state =>({selectedCategory: {...state.selectedCategory , [item]: value}})),
 
   selectPrice: {},
   setSelectPrice: (productId, item) =>
