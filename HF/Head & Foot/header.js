@@ -1,17 +1,19 @@
 import {View, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, { useState } from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {getBrands, getProducts} from '../firebase/System';
 import SvgIcons from '../../Icons/SvgIcons';
+import Menu from '../MainComponent/Menu';
 
 const {width, height} = Dimensions.get('screen');
 
-export default function Header({Styles}) {
+export default function Header({Styles, visibility}) {
   const navigation = useNavigation();
+  
 
   return (
     <View style={[styles.container, {backgroundColor: Styles}]}>
-      <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
+      <TouchableOpacity onPress={()=>navigation.navigate("Menu")} >
         <SvgIcons name="Menu" width={width / 15} height={height / 30} />
       </TouchableOpacity>
       <View style={{marginLeft: width / 15}}>

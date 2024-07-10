@@ -18,11 +18,12 @@ export default function BannerSlider({images}) {
     <ActivityIndicator />;
   };
 
+
+
   
   const onMomentumScrollEnd = (event) => {
     const newSlideNo = Math.round(event.nativeEvent.contentOffset.x / width);
     setSlideNo(newSlideNo);
-    console.log('slide............................', newSlideNo);
   };
   
   const test1 = Array.isArray(images) && images.length > 0 ? images[0] : null;
@@ -43,7 +44,6 @@ export default function BannerSlider({images}) {
           onMomentumScrollEnd={onMomentumScrollEnd}
           >
           {test1.banner.map((item, index) => {
-            // setSlideNo(index);
             return (
               <Image
                 key={index}

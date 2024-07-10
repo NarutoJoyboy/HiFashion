@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -27,11 +27,11 @@ import {Title} from '../ImpComponent/Title';
 import {getProducts, getAppData, getCategory} from '../firebase/System';
 import useStore from '../Zustand/UseStore';
 import BannerSlider from '../ImpComponent/BannerSlider';
+import Menu from './Menu';
 
 const {width, height} = Dimensions.get('screen');
 
 export default function Home() {
-
   useEffect(() => {
     getProducts();
     getAppData();
@@ -39,9 +39,8 @@ export default function Home() {
   }, []);
   const appData = useStore(state => state.appData);
   const products = useStore(state => state.products);
-  // const category = useStore(state => state.category);
 
-  // console.log("......................", category);
+  console.log('......................');
 
   const navigation = useNavigation();
   const Brnds = [
@@ -75,13 +74,22 @@ export default function Home() {
       id: 4,
     },
   ];
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const visibility = modalVisible;
+
+  const CollectionImages = image => {};
 
   return (
     <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View>
         <Header Styles={'#E7EAEF'} />
-        <View style={{backgroundColor: '#E7EAEF',  height: height / 1.39, width:width,}}>
-          {/* <HomeImg1 width={width} height={height / 1.39} /> */}
+        <View
+          style={{
+            backgroundColor: '#E7EAEF',
+            height: height / 1.39,
+            width: width,
+          }}>
           <BannerSlider images={appData} />
           <TouchableOpacity style={styles.explorebut}>
             <Text style={styles.explorebutstyle}>EXPLORE COLLECTION</Text>
@@ -89,7 +97,7 @@ export default function Home() {
         </View>
         <Title label={'NEW ARRIVAL'} />
         <View style={{flex: 1}}>
-          <HomeTabs  data = {products}/>
+          <HomeTabs data={products} />
         </View>
         <View
           style={{
@@ -97,7 +105,6 @@ export default function Home() {
             justifyContent: 'center',
             alignContent: 'center',
           }}>
-          
           <Divider />
         </View>
 
@@ -121,19 +128,48 @@ export default function Home() {
         </View>
         <View style={{alignItems: 'center'}}>
           <Title label={'COLLECTIONS'} />
-          <HomeImg2 width={width} height={height / 3} />
-          <HomeImg3 width={width / 1.4} height={height / 2.5} />
-          {/* <Video source={require('../Icons/1.1.mp4')}
-          controls={true}                      
-          ref={(ref) => {
-            this.player = ref
-          }}                                      
-          onBuffer={this.onBuffer}                
-          onError={this.videoError}               
-          style={{width:width, height:height/3.5}}
-          resizeMode={'contains'}
-          fullscreen={true}
-          /> */}
+          <TouchableOpacity>
+            {appData.map((element, elementIndex) =>
+              element.collection_images1.map((item, index) => (
+                <Image
+                  key={`${elementIndex}-${index}`}
+                  source={{uri: item}}
+                  style={styles.collectionImage1}
+                  onError={e =>
+                    console.log('Image load error:', e.nativeEvent.error)
+                  }
+                />
+              )),
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity>
+            {appData.map((element, elementIndex) =>
+              element.collection_images2.map((item, index) => (
+                <Image
+                  key={`${elementIndex}-${index}`}
+                  source={{uri: item}}
+                  style={styles.collectionImage2}
+                  onError={e =>
+                    console.log('Image load error:', e.nativeEvent.error)
+                  }
+                />
+              )),
+            )}
+          </TouchableOpacity>
+          <TouchableOpacity>
+            {appData.map((element, elementIndex) =>
+              element.collection_images3.map((item, index) => (
+                <Image
+                  key={`${elementIndex}-${index}`}
+                  source={{uri: item}}
+                  style={styles.collectionImage1}
+                  onError={e =>
+                    console.log('Image load error:', e.nativeEvent.error)
+                  }
+                />
+              )),
+            )}
+          </TouchableOpacity>
         </View>
         <View>
           <Title label={'Just For You'} />
@@ -146,16 +182,7 @@ export default function Home() {
               renderItem={({item}) => {
                 return (
                   <TouchableOpacity activeOpacity={0.5}>
-                    <View>
-                      {/* <Image
-                      source={require('../../Icons/Frame2.png')}
-                      style={{
-                        width: width / 1.7,
-                        height: height / 2.7,
-                        marginLeft: 10,
-                      }}
-                      /> */}
-                    </View>
+                    <View></View>
                     <Text style={styles.txt5}>
                       Harris Tweed Three Button Jacket
                     </Text>
@@ -244,8 +271,15 @@ const styles = StyleSheet.create({
   },
 
   // Image Styles
-  collectionImage: {
+  collectionImage1: {
+    width: width,
+    height: height / 2.9,
+    marginTop: 30,
+    marginBottom: 10,
+  },
+  collectionImage2: {
     width: width / 1.4,
+    height: height / 2.9,
     marginTop: 30,
     marginBottom: 10,
   },

@@ -7,108 +7,184 @@ import {
   Dimensions,
   StyleSheet,
   Animated,
-  
+  TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
+import FontFamily from '../Colors/style';
 
 export default function TabBar() {
   const {Width, Height} = Dimensions.get('screen');
 
-  const tabs = [{title: 'WOMEN'}, {title: 'MEN'}, {title: 'KIDS'}];
+  const tabs = [{title: 'women'}, {title: 'men'}, {title: 'kids'}];
+
+  const [activeTab, setActiveTab] = useState('women');
 
   const Divider = () => {
-    return(
+    return (
       <View style={styles.container}>
-      <View style={styles.divider}>
-        <View style={styles.dividerline} />
-        <View style={styles.dividerbox} />
-        <View style={styles.dividerline} />
-      </View>
-    </View>
-    )
-  }
-
-  const WomenType = () => {
-    return (
-      <View>
-        <Text>Women</Text>
+        <View style={styles.divider}>
+          <View style={[styles.dividerline, {width: activeTab.length * 7}]} />
+          <View style={styles.dividerbox} />
+          <View style={[styles.dividerline, {width: activeTab.length * 7}]} />
+        </View>
       </View>
     );
   };
 
-  const ManType = () => {
+  // const Data = [
+  //   {data: "women",
+  //   {title: 'New', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Apparel', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Bag', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Shoes', data: ['Sneakers', 'Heels', 'Flats']},
+  //   {title: 'Beauty', data: ['Makeup', 'Skincare', 'Haircare']},
+  //   {title: 'Accessories', data: ['Bags', 'Jewellery', 'Sunglasses']},
+  //   }
+  // ];
+
+  const Types = [
+    {
+      title: 'women',
+      header: [
+        {title: 'New', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Apparel', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Bag', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Shoes', data: ['Sneakers', 'Heels', 'Flats']},
+        {title: 'Beauty', data: ['Makeup', 'Skincare', 'Haircare']},
+        {title: 'Accessories', data: ['Bags', 'Jewellery', 'Sunglasses']},
+      ],
+    },
+    {
+      title: 'men',
+      header: [
+        {title: 'New1', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Apparel', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Bag', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Shoes', data: ['Sneakers', 'Heels', 'Flats']},
+        {title: 'Beauty', data: ['Makeup', 'Skincare', 'Haircare']},
+        {title: 'Accessories', data: ['Bags', 'Jewellery', 'Sunglasses']},
+      ],
+    },
+    {
+      title: 'kids',
+      header: [
+        {title: 'New2', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Apparel', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Bag', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+        {title: 'Shoes', data: ['Sneakers', 'Heels', 'Flats']},
+        {title: 'Beauty', data: ['Makeup', 'Skincare', 'Haircare']},
+        {title: 'Accessories', data: ['Bags', 'Jewellery', 'Sunglasses']},
+      ],
+    },
+  ];
+
+  // const menData = [
+  //   {title: 'New1', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Apparel', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Bag', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Shoes', data: ['Sneakers', 'Heels', 'Flats']},
+  //   {title: 'Beauty', data: ['Makeup', 'Skincare', 'Haircare']},
+  //   {title: 'Accessories', data: ['Bags', 'Jewellery', 'Sunglasses']},
+  // ];
+
+  // const kidsData = [
+  //   {title: 'New2', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Apparel', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Bag', data: ['Tops', 'Dresses', 'Bottoms', 'Jumpsuits']},
+  //   {title: 'Shoes', data: ['Sneakers', 'Heels', 'Flats']},
+  //   {title: 'Beauty', data: ['Makeup', 'Skincare', 'Haircare']},
+  //   {title: 'Accessories', data: ['Bags', 'Jewellery', 'Sunglasses']},
+  // ];
+
+  const RenderItem = ({data}) => {
     return (
       <View>
-        <Text>Women</Text>
+        <FlatList
+          data={data}
+          horizontal={true}
+          keyExtractor={(item, index) => item + index}
+          renderItem={({item}) => {
+            return (
+              <View style={{width: Width, }}>
+                <FlatList
+                  data={item.header}
+                  keyExtractor={(item, index) => item + index}
+                  renderItem={({item}) => {
+                    return (
+                      <View>
+                        <Text>{item.title}</Text>
+                        {activeTab}
+                        <FlatList
+                        data={item.data}
+                        keyExtractor={(item, index) => item + index}
+                        renderItem={({item}) => {
+                          return (
+                            <View>
+                              <Text>{item}</Text>
+                            </View>
+                          );
+                        }}
+                        />
+                      </View>
+                    );
+                  }}
+                />
+              </View>
+            );
+          }}
+        />
       </View>
     );
   };
-
-  const KidsType = () => {
-    return (
-      <View>
-        <Text>Women</Text>
-      </View>
-    );
-  };
-
-                                                                                                                                                                                                                                                            
 
   return (
-    <View>
-      <Animated.FlatList
-        data={[1,2,3]}
-        keyExtractor={(item, index) => index.toString()}
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        pagingEnabled
-        bounces={false}
-        renderItem={({item}) => {
+    <View style={{marginVertical: 30}}>
+      <View style={{flexDirection: 'row', marginBottom: 20}}>
+        {tabs.map((tab, index) => {
           return (
-            <View style={{width: Width, height: Height}}>
-              <View style={[StyleSheet.absoluteFillObject]}></View>
-            </View>
+            <TouchableOpacity
+              key={index}
+              style={{marginRight: 50}}
+              onPress={() => setActiveTab(tab.title)}>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontFamily: FontFamily.txt.fontFamily,
+                  textAlign: 'center',
+                  color: activeTab === tab.title ? 'black' : 'gray',
+                }}>
+                {tab.title.toUpperCase()}
+              </Text>
+              {activeTab === tab.title ? <Divider /> : null}
+            </TouchableOpacity>
           );
-        }}
-      />
-      <View style={{flexDirection:'row', position:'absolute', top:20,}}>
-        {tabs.map((item, index) => {
-          return(
-            <View key={index} style={{marginSt:4, marginRight:10}}>
-              <Text style={{fontSize:18, color:'black', fontFamily:'TenorSans-Regular', textAlign:'center'}}>{item.title}</Text>
-              <View>
-              <Divider/>
-              </View>
-            </View>
-          )
         })}
       </View>
-        <View style={{borderBottomColor:'888888', borderWidth:0.6, position:'absolute', top:45, width:"80%",  }}/>
-      </View>
-    
+      <RenderItem data={Types} activeType = {ite} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'center',
+    marginVertical: 10,
   },
   divider: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   dividerline: {
-    borderBottomWidth: 0.2,
-    width: 40,
+    borderBottomWidth: 1,
     borderColor: '#DD8560',
   },
   dividerbox: {
-    borderWidth: 0.5,
+    borderWidth: 5,
     width: 7,
     height: 7,
     transform: [{rotate: '45deg'}],
     margin: 1,
     borderColor: '#DD8560',
-    backgroundColor:'DD8560'
+    backgroundColor: '#DD8560',
   },
 });
