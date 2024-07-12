@@ -104,6 +104,7 @@ export default function TabBar() {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
+        scrollEnabled={false}
         onMomentumScrollEnd={SliderScreen}
         keyExtractor={item => item.title}
         renderItem={({item}) => (
@@ -181,8 +182,8 @@ export default function TabBar() {
                 color: activeTab === tab.title ? 'black' : 'gray',
               }}>
               {tab.title.toUpperCase()}
-            </Text>
             {activeTab === tab.title && <BottomDivider />}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>
