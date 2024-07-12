@@ -17,7 +17,8 @@ import ShoppingBagWhite from "./shoppingBagWhite.svg";
 import Close from "./Close.svg";
 import Twitter from "./Twitter.svg";
 import AddMessage from "./AddMessage.svg";
-
+import Call from "./Call.svg";
+import Location from "./Location.svg";
 
 const SvgIcons = ({name, width, height}) => {
     switch (name) {
@@ -55,6 +56,10 @@ const SvgIcons = ({name, width, height}) => {
         return <Twitter width={width} height={height} />;
         case "AddMessage":
         return <AddMessage width={width} height={height} />;
+        case "Call":
+        return <Call width={width} height={height} />;
+        case "Location":
+        return <Location width={width} height={height} />;
         default:
         return null;
     }
