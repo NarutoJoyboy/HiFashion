@@ -62,7 +62,6 @@ const Types = [
 
 export default function TabBar() {
   const [activeTab, setActiveTab] = useState('women');
-  const [toggle, setToggle] = useState({});
   const [slide, setSlide] = useState(0);
   const scrollRef = useRef(null);
   const {width} = Dimensions.get('screen');
